@@ -1,24 +1,4 @@
-﻿//
-//  Panel.cs
-//
-//  Author:
-//       Michael Becker <alcexhim@gmail.com>
-//
-//  Copyright (c) 2019 
-//
-//  This program is free software: you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-//
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
-//
-//  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-using System;
+﻿using System;
 using System.Web.UI;
 
 namespace MBS.Web.Controls
@@ -28,39 +8,31 @@ namespace MBS.Web.Controls
 	{
 		public string Title { get; set; } = String.Empty;
 
-		public System.Web.UI.WebControls.Panel HeaderControls { get; set; } = null;
-		public System.Web.UI.WebControls.Panel ContentControls { get; set; } = null;
-		public System.Web.UI.WebControls.Panel FooterControls { get; set; } = null;
+		public System.Web.UI.WebControls.Panel HeaderControls { get; } = new System.Web.UI.WebControls.Panel();
+		public System.Web.UI.WebControls.Panel ContentControls { get; } = new System.Web.UI.WebControls.Panel();
+		public System.Web.UI.WebControls.Panel FooterControls { get; } = new System.Web.UI.WebControls.Panel();
 
-		public Panel()
+		public override void RenderBeginTag(HtmlTextWriter writer)
 		{
-			base.Attributes.Add("class", "Panel");
-
-			this.HeaderControls = new System.Web.UI.WebControls.Panel();
-			this.ContentControls = new System.Web.UI.WebControls.Panel();
-			this.FooterControls = new System.Web.UI.WebControls.Panel();
-
-			this.HeaderControls.Visible = true;
-			this.ContentControls.Visible = true;
-			this.FooterControls.Visible = true;
-		}
-
-		protected override void RenderContents(HtmlTextWriter writer)
-		{
-			writer.Write("<div class=\"Title\">");
-			writer.Write(Title);
-			writer.Write("</div>");
-
-			writer.Write("<div class=\"Content\">");
-			this.ContentControls.RenderControl(writer);
-			writer.Write("</div>");
-
-			if (this.FooterControls != null && this.FooterControls.Controls.Count > 0)
+			if (HeaderControls.Controls.Count > 0 || !String.IsNullOrEmpty(Title))
 			{
-				writer.Write("<div class=\"Footer\">");
-				this.FooterControls.RenderControl(writer);
-				writer.Write("</div>");
+				HeaderControls.AddCssClass("uwt-panel-header");
+				Controls.Add(HeaderControls);
 			}
+
+			ContentControls.AddCssClass("uwt-panel-content");
+			Controls.Add(ContentControls);
+
+			FooterControls.AddCssClass("uwt-panel-footer");
+			Controls.Add(FooterControls);
+
+			this.AddCssClass("uwt-panel");
+
+			base.RenderBeginTag(writer);
+
+			System.Web.UI.WebControls.Label lblTitleBar = new System.Web.UI.WebControls.Label();
+			lblTitleBar.Text = Title;
+			HeaderControls.Controls.Add(lblTitleBar);
 		}
 	}
 }
