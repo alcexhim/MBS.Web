@@ -1,0 +1,41 @@
+﻿div.uwt-sidebar
+{
+	background-color: #e6e7e8;
+	box-shadow: inset -1px 0 0 0 rgba(0, 0, 0, 0.1);
+	&> ul > li
+	{
+		&> a:hover
+		{
+			background-color: #f7f8fa;
+		}
+		&.uwt-selected > a
+		{
+			background-color: #595f69;
+			color: #ffffff;
+			position: relative;
+			&::after
+			{
+				width: 0px;
+				height: 0px;
+				border-style: solid;
+				border-width: 9px 9px 9px 0;
+				border-color: transparent #f7f8fa transparent transparent;
+				content: "";
+				position: absolute;
+				top: 50%;
+				margin-top: -9px;
+				right: 0px;
+			}
+		}
+		&.uwt-section > a
+		{
+			background-color: inherit !important;
+			color: #abc;
+			cursor: default;
+			letter-spacing: 4px;
+			font-size: 12px;
+			text-transform: uppercase;
+			padding: 10px;
+		}
+	}
+}

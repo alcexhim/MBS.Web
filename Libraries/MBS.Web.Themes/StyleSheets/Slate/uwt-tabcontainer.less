@@ -1,0 +1,29 @@
+﻿div.uwt-tabcontainer
+{
+	&> div.uwt-tabcontainer-tabpages > div.uwt-tabpage
+	{
+		background-color: #fff;
+		border: solid 1px #d2d3d6;
+	}
+	&> ul.uwt-tabcontainer-tabs > li
+	{
+		&> a
+		{
+			border: solid 1px transparent;
+			border-top: solid 2px transparent;
+			color: #4f8edc;
+			&:hover
+			{
+				background-color: #edeef0;
+			}
+		}
+		&.uwt-selected > a
+		{
+			background-color: #fff;
+			border-color: #ddd;
+			border-top-color: #4f8edc;
+			border-bottom-color: transparent;
+			color: #4f5259;
+		}
+	}
+}

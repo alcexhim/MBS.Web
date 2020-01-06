@@ -1,0 +1,21 @@
+﻿span.uwt-spinner
+{
+	animation: rotation .6s infinite linear;
+}
+div#uwt-page-loading > span.uwt-spinner
+{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+}
+@keyframes rotation
+{
+	0%
+	{
+		transform: rotate(0deg);
+	}
+	100%
+	{
+		transform: rotate(359deg);
+	}
+}

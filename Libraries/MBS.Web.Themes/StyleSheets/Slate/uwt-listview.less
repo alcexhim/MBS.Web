@@ -1,0 +1,44 @@
+﻿table.uwt-listview
+{
+	border: solid 1px #e6e7e8;
+	&> thead
+	{
+		background-color: #fff;
+		border-bottom: solid 2px #e6e7e8;
+		&> tr
+		{
+			&> th[colspan]
+			{
+				background-color: #cef;
+			}
+			&> th, td
+			{
+				&> a
+				{
+					color: #4d4d4d;
+				}
+			}
+		}
+	}
+	&> tbody
+	{
+		&> tr
+		{
+			&:nth-child(2n) > td
+			{
+				background-color: #ffffff;
+			}
+			&:nth-child(2n+1) > td
+			{
+				background-color: #f7f8fa;
+			}
+		}
+	}
+	tr
+	{
+		td, th
+		{
+			border: solid 1px #e6e7e8;
+		}
+	}
+}

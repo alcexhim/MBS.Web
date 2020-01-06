@@ -1,0 +1,45 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MBS.Web", "Libraries\MBS.Web\MBS.Web.csproj", "{D30649B8-EAF2-4D4D-968F-A7C65572F7FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MBS.Web.Themes", "Libraries\MBS.Web.Themes\MBS.Web.Themes.csproj", "{18492D58-0C92-4904-AAAB-58283C66150F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MBS.Web.Controls", "Libraries\MBS.Web.Controls\MBS.Web.Controls.csproj", "{99886629-32B3-46D3-9094-6445A33FCFA9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{D550645A-A1B9-47D7-A78B-41ED4BD1D314}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MBS.Web.Plugins.Less", "Plugins\MBS.Web.Plugins.Less\MBS.Web.Plugins.Less.csproj", "{C37BE4CF-CFB6-4A7B-8CAE-6EE21E37D2FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{42D4CA52-0B1A-4719-B268-C6CF3353E1E9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D30649B8-EAF2-4D4D-968F-A7C65572F7FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D30649B8-EAF2-4D4D-968F-A7C65572F7FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D30649B8-EAF2-4D4D-968F-A7C65572F7FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D30649B8-EAF2-4D4D-968F-A7C65572F7FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18492D58-0C92-4904-AAAB-58283C66150F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18492D58-0C92-4904-AAAB-58283C66150F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18492D58-0C92-4904-AAAB-58283C66150F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18492D58-0C92-4904-AAAB-58283C66150F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99886629-32B3-46D3-9094-6445A33FCFA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99886629-32B3-46D3-9094-6445A33FCFA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99886629-32B3-46D3-9094-6445A33FCFA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99886629-32B3-46D3-9094-6445A33FCFA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C37BE4CF-CFB6-4A7B-8CAE-6EE21E37D2FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C37BE4CF-CFB6-4A7B-8CAE-6EE21E37D2FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C37BE4CF-CFB6-4A7B-8CAE-6EE21E37D2FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C37BE4CF-CFB6-4A7B-8CAE-6EE21E37D2FD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C37BE4CF-CFB6-4A7B-8CAE-6EE21E37D2FD} = {D550645A-A1B9-47D7-A78B-41ED4BD1D314}
+		{D30649B8-EAF2-4D4D-968F-A7C65572F7FA} = {42D4CA52-0B1A-4719-B268-C6CF3353E1E9}
+		{99886629-32B3-46D3-9094-6445A33FCFA9} = {42D4CA52-0B1A-4719-B268-C6CF3353E1E9}
+		{18492D58-0C92-4904-AAAB-58283C66150F} = {42D4CA52-0B1A-4719-B268-C6CF3353E1E9}
+	EndGlobalSection
+EndGlobal

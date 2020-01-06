@@ -1,0 +1,26 @@
+﻿input, textarea
+{
+	background-color: #fff;
+	border: solid 1px #d2d3d6;
+	color: #4d4d4d;
+	font-size: 14px;
+	line-height: 1.428571429;
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+	padding: 5px 9px;
+	&:focus
+	{
+		border-color: #4d4d4d;
+	}
+}
+
+.uwt-formview
+{
+	&> .uwt-formviewitem, tr > td
+	{
+		&> input, textarea
+		{
+			box-sizing: border-box;
+			width: 100%;
+		}
+	}
+}

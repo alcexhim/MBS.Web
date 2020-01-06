@@ -1,0 +1,70 @@
+﻿table.uwt-listview
+{
+	border-collapse: collapse;
+	margin-top: 10px;
+	&.uwt-expand
+	{
+		box-sizing: border-box;
+		width: 100%;
+	}
+	&> caption
+	{
+		text-align: left;
+		&> span.uwt-listview-title
+		{
+			font-weight: bold;
+			padding-right: 8px;
+		}
+		&> span.uwt-listview-item-count
+		{
+		}
+		&> span.uwt-listview-item-count-label
+		{
+		}
+	}
+	tr
+	{
+		&> th, &> td
+		{
+			padding: 10px;
+		}
+		&> th:not([colspan])
+		{
+			text-align: left;
+		}
+	}
+	&> thead
+	{
+		&> tr > th
+		{
+			vertical-align: bottom;
+			&> a
+			{
+				display: block;
+				
+				/* remove the padding from the surrounding td */
+				margin: -10px;
+				/* and apply it back for this block-level a element */
+				padding: 10px;
+			}
+		}
+	}
+	&> tbody
+	{
+		&> tr
+		{
+			&.uwt-selected
+			{
+				&> td
+				{
+					background-color: #08c;
+					color: #fff;
+				}
+				&:hover > td
+				{
+					background-color: #0075b0;
+				}
+			}
+		}
+	}
+}

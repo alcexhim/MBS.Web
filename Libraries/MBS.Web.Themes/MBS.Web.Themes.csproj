@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{18492D58-0C92-4904-AAAB-58283C66150F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>MBS.Web.Themes</RootNamespace>
+    <AssemblyName>MBS.Web.Themes</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Output\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Output\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Web" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThemesHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Fonts\" />
+    <Folder Include="Fonts\SourceSansPro\" />
+    <Folder Include="StyleSheets\" />
+    <Folder Include="StyleSheets\Slate\" />
+    <Folder Include="Fonts\FontAwesome\" />
+    <Folder Include="Scripts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Fonts\SourceSansPro\SourceSansPro-Bold.otf" />
+    <EmbeddedResource Include="Fonts\SourceSansPro\SourceSansPro-Italic.otf" />
+    <EmbeddedResource Include="Fonts\SourceSansPro\SourceSansPro-ExtraLight.otf" />
+    <EmbeddedResource Include="Fonts\SourceSansPro\SourceSansPro-Semibold-Italic.otf" />
+    <EmbeddedResource Include="Fonts\SourceSansPro\SourceSansPro-ExtraLight-Italic.otf" />
+    <EmbeddedResource Include="Fonts\SourceSansPro\SourceSansPro-Black-Italic.otf" />
+    <EmbeddedResource Include="Fonts\SourceSansPro\SourceSansPro.css" />
+    <EmbeddedResource Include="Fonts\SourceSansPro\SourceSansPro-Black.otf" />
+    <EmbeddedResource Include="Fonts\SourceSansPro\SourceSansPro-Light.otf" />
+    <EmbeddedResource Include="Fonts\SourceSansPro\SourceSansPro-Bold-Italic.otf" />
+    <EmbeddedResource Include="Fonts\SourceSansPro\SourceSansPro-Semibold.otf" />
+    <EmbeddedResource Include="Fonts\SourceSansPro\SourceSansPro-Light-Italic.otf" />
+    <EmbeddedResource Include="Fonts\SourceSansPro\SourceSansPro-Regular.otf" />
+    <EmbeddedResource Include="StyleSheets\uwt.less" />
+    <EmbeddedResource Include="StyleSheets\uwt-button.less" />
+    <EmbeddedResource Include="StyleSheets\uwt-column.less" />
+    <EmbeddedResource Include="StyleSheets\uwt-expand.less" />
+    <EmbeddedResource Include="StyleSheets\uwt-formview.less" />
+    <EmbeddedResource Include="StyleSheets\uwt-header.less" />
+    <EmbeddedResource Include="StyleSheets\uwt-page.less" />
+    <EmbeddedResource Include="StyleSheets\uwt-panel.less" />
+    <EmbeddedResource Include="StyleSheets\uwt-sidebar.less" />
+    <EmbeddedResource Include="StyleSheets\uwt-sidebar-profile.less" />
+    <EmbeddedResource Include="StyleSheets\uwt-spinner.less" />
+    <EmbeddedResource Include="StyleSheets\uwt-textbox.less" />
+    <EmbeddedResource Include="StyleSheets\uwt-tile.less" />
+    <EmbeddedResource Include="StyleSheets\Slate\uwt.less" />
+    <EmbeddedResource Include="StyleSheets\Slate\uwt-button.less" />
+    <EmbeddedResource Include="StyleSheets\Slate\uwt-header.less" />
+    <EmbeddedResource Include="StyleSheets\Slate\uwt-link.less" />
+    <EmbeddedResource Include="StyleSheets\Slate\uwt-page.less" />
+    <EmbeddedResource Include="StyleSheets\Slate\uwt-panel.less" />
+    <EmbeddedResource Include="StyleSheets\Slate\uwt-sidebar.less" />
+    <EmbeddedResource Include="StyleSheets\Slate\uwt-spinner.less" />
+    <EmbeddedResource Include="StyleSheets\Slate\uwt-textbox.less" />
+    <EmbeddedResource Include="StyleSheets\Slate\uwt-tile.less" />
+    <EmbeddedResource Include="Fonts\FontAwesome\FontAwesome.css" />
+    <EmbeddedResource Include="Fonts\FontAwesome\fontawesome-webfont.ttf" />
+    <EmbeddedResource Include="Fonts\FontAwesome\fontawesome-webfont.svg" />
+    <EmbeddedResource Include="Fonts\FontAwesome\fontawesome-webfont.woff2" />
+    <EmbeddedResource Include="Fonts\FontAwesome\fontawesome-webfont.woff" />
+    <EmbeddedResource Include="Fonts\FontAwesome\fontawesome-webfont.eot" />
+    <EmbeddedResource Include="Fonts\FontAwesome\FontAwesome.otf" />
+    <EmbeddedResource Include="StyleSheets\uwt-listview.less" />
+    <EmbeddedResource Include="StyleSheets\Slate\uwt-listview.less" />
+    <EmbeddedResource Include="StyleSheets\Slate\uwt-badge.less" />
+    <EmbeddedResource Include="StyleSheets\uwt-badge.less" />
+    <EmbeddedResource Include="StyleSheets\Slate\uwt-actionpreviewbutton.less" />
+    <EmbeddedResource Include="StyleSheets\uwt-applicationmenu.less" />
+    <EmbeddedResource Include="StyleSheets\uwt-tabcontainer.less" />
+    <EmbeddedResource Include="StyleSheets\Slate\uwt-tabcontainer.less" />
+    <EmbeddedResource Include="Scripts\Base64.js" />
+    <EmbeddedResource Include="Scripts\datetime.1-1.js" />
+    <EmbeddedResource Include="Scripts\json2.min.js" />
+    <EmbeddedResource Include="Scripts\MousePosition.js" />
+    <EmbeddedResource Include="Scripts\PrependArgument.js" />
+    <EmbeddedResource Include="Scripts\System.js" />
+    <EmbeddedResource Include="Scripts\WindowDimensions.js" />
+    <EmbeddedResource Include="Scripts\Controls\Popup.js" />
+    <EmbeddedResource Include="Scripts\Controls\Menu.js" />
+    <EmbeddedResource Include="Scripts\Controls\ListView.js" />
+    <EmbeddedResource Include="Scripts\Controls\TrackBar.js" />
+    <EmbeddedResource Include="Scripts\Controls\TabContainer.js" />
+    <EmbeddedResource Include="Scripts\Controls\CheckBox.js" />
+    <EmbeddedResource Include="Scripts\Controls\DropDown.js" />
+    <EmbeddedResource Include="Scripts\Controls\CommandBar.js" />
+    <EmbeddedResource Include="Scripts\Controls\CodeEditor.js" />
+    <EmbeddedResource Include="Scripts\Controls\Meter.js" />
+    <EmbeddedResource Include="Scripts\Controls\SplitContainer.js" />
+    <EmbeddedResource Include="Scripts\Controls\Slider.js" />
+    <EmbeddedResource Include="Scripts\Controls\Disclosure.js" />
+    <EmbeddedResource Include="Scripts\Controls\Panel.js" />
+    <EmbeddedResource Include="Scripts\Controls\ToggleSwitch.js" />
+    <EmbeddedResource Include="Scripts\Controls\ToolTip.js" />
+    <EmbeddedResource Include="Scripts\Controls\Wizard.js" />
+    <EmbeddedResource Include="Scripts\Controls\TextBox.js" />
+    <EmbeddedResource Include="Scripts\Controls\FlyoutTabContainer.js" />
+    <EmbeddedResource Include="Scripts\Controls\SlideContainer.js" />
+    <EmbeddedResource Include="Scripts\Controls\Button.js" />
+    <EmbeddedResource Include="Scripts\Controls\Countdown.js" />
+    <EmbeddedResource Include="Scripts\Controls\Sidebar.js" />
+    <EmbeddedResource Include="Scripts\Controls\LinkButton.js" />
+    <EmbeddedResource Include="Scripts\Controls\Ribbon.js" />
+    <EmbeddedResource Include="Scripts\Controls\AdditionalDetailWidget.js" />
+    <EmbeddedResource Include="Scripts\Controls\ProgressBar.js" />
+    <EmbeddedResource Include="Scripts\Controls\Window.js" />
+    <EmbeddedResource Include="Scripts\Controls\Notification.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MBS.Web.csproj">
+      <Project>{D30649B8-EAF2-4D4D-968F-A7C65572F7FA}</Project>
+      <Name>MBS.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Plugins\MBS.Web.Plugins.Less\MBS.Web.Plugins.Less.csproj">
+      <Project>{C37BE4CF-CFB6-4A7B-8CAE-6EE21E37D2FD}</Project>
+      <Name>MBS.Web.Plugins.Less</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

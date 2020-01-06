@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C37BE4CF-CFB6-4A7B-8CAE-6EE21E37D2FD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>MBS.Web.Plugins.Less</RootNamespace>
+    <AssemblyName>MBS.Web.Plugins.Less</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Output\Debug\Plugins</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Output\Release\Plugins</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="LessHandler.cs" />
+    <Compile Include="dotless\Core\Cache\ICache.cs" />
+    <Compile Include="dotless\Core\Cache\InMemoryCache.cs" />
+    <Compile Include="dotless\Core\configuration\DotlessConfiguration.cs" />
+    <Compile Include="dotless\Core\Engine\CacheDecorator.cs" />
+    <Compile Include="dotless\Core\Engine\ILessEngine.cs" />
+    <Compile Include="dotless\Core\Engine\LessEngine.cs" />
+    <Compile Include="dotless\Core\Engine\ParameterDecorator.cs" />
+    <Compile Include="dotless\Core\Exceptions\ParserException.cs" />
+    <Compile Include="dotless\Core\Exceptions\ParsingException.cs" />
+    <Compile Include="dotless\Core\Extensions\MissingTypeRegistrationException.cs" />
+    <Compile Include="dotless\Core\Importers\IImporter.cs" />
+    <Compile Include="dotless\Core\Importers\Importer.cs" />
+    <Compile Include="dotless\Core\Input\FileReader.cs" />
+    <Compile Include="dotless\Core\Input\IFileReader.cs" />
+    <Compile Include="dotless\Core\Input\IPathResolver.cs" />
+    <Compile Include="dotless\Core\Input\RelativePathResolver.cs" />
+    <Compile Include="dotless\Core\Less.cs" />
+    <Compile Include="dotless\Core\Loggers\ConsoleLogger.cs" />
+    <Compile Include="dotless\Core\Loggers\DiagnosticsLogger.cs" />
+    <Compile Include="dotless\Core\Loggers\ILogger.cs" />
+    <Compile Include="dotless\Core\Loggers\Logger.cs" />
+    <Compile Include="dotless\Core\Loggers\NullLogger.cs" />
+    <Compile Include="dotless\Core\Parameters\ConsoleArgumentParameterSource.cs" />
+    <Compile Include="dotless\Core\Parameters\IParameterSource.cs" />
+    <Compile Include="dotless\Core\Parameters\NullParameterSource.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\AbsFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\AddFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\AlphaFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\ArgbFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\AverageFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\BlueFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\CeilFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\ColorFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\ColorFunctionBase.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\ColorMixFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\ComplementFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\ContrastFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\DataUriFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\DefaultFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\DifferenceFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\ExclusionFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\ExtractFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\FloorFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\FormatStringFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\Function.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\GradientImageFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\GrayscaleFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\GreenFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\HardlightFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\HexFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\HslaFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\HslColorFunctionBase.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\HslFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\HueFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\IncrementFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\IsFunctions.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\LengthFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\LightnessFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\ListFunctionBase.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\MixFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\MultiplyFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\NegationFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\NumberFunctionBase.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\OverlayFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\PercentageFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\PowFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\RedFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\RgbaFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\RgbFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\RoundFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\SaturationFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\ScreenFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\SoftlightFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\StringFunctions.cs" />
+    <Compile Include="dotless\Core\Parser\Functions\UnitFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Infrastructure\Closure.cs" />
+    <Compile Include="dotless\Core\Parser\Infrastructure\Context.cs" />
+    <Compile Include="dotless\Core\Parser\Infrastructure\DefaultNodeProvider.cs" />
+    <Compile Include="dotless\Core\Parser\Infrastructure\Env.cs" />
+    <Compile Include="dotless\Core\Parser\Infrastructure\Extender.cs" />
+    <Compile Include="dotless\Core\Parser\Infrastructure\INodeProvider.cs" />
+    <Compile Include="dotless\Core\Parser\Infrastructure\IOperable.cs" />
+    <Compile Include="dotless\Core\Parser\Infrastructure\MimeTypeLookup.cs" />
+    <Compile Include="dotless\Core\Parser\Infrastructure\MixinMatch.cs" />
+    <Compile Include="dotless\Core\Parser\Infrastructure\NamedArgument.cs" />
+    <Compile Include="dotless\Core\Parser\Infrastructure\Nodes\BooleanNode.cs" />
+    <Compile Include="dotless\Core\Parser\Infrastructure\Nodes\CharMatchResult.cs" />
+    <Compile Include="dotless\Core\Parser\Infrastructure\Nodes\Node.cs" />
+    <Compile Include="dotless\Core\Parser\Infrastructure\Nodes\NodeList.cs" />
+    <Compile Include="dotless\Core\Parser\Infrastructure\Nodes\RegexMatchResult.cs" />
+    <Compile Include="dotless\Core\Parser\Infrastructure\Nodes\TextNode.cs" />
+    <Compile Include="dotless\Core\Parser\Infrastructure\Output.cs" />
+    <Compile Include="dotless\Core\Parser\Parser.cs" />
+    <Compile Include="dotless\Core\Parser\ParserLocation.cs" />
+    <Compile Include="dotless\Core\Parser\Parsers.cs" />
+    <Compile Include="dotless\Core\Parser\Tokenizer.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\Alpha.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\Assignment.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\Attribute.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\Call.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\Color.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\Combinator.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\Comment.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\Condition.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\CssFunction.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\Directive.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\Element.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\Expression.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\Extend.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\GuardedRuleset.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\Import.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\KeyFrame.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\Keyword.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\Media.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\MixinCall.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\MixinDefinition.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\Number.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\Operation.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\Paren.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\Quoted.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\RepeatEntity.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\Root.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\Rule.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\Ruleset.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\Script.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\Selector.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\Shorthand.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\Url.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\Value.cs" />
+    <Compile Include="dotless\Core\Parser\Tree\Variable.cs" />
+    <Compile Include="dotless\Core\Parser\Zone.cs" />
+    <Compile Include="dotless\Core\Plugins\ColorSpinPlugin.cs" />
+    <Compile Include="dotless\Core\Plugins\DelegateVisitor.cs" />
+    <Compile Include="dotless\Core\Plugins\GenericPluginConfigurator.cs" />
+    <Compile Include="dotless\Core\Plugins\IFunctionPlugin.cs" />
+    <Compile Include="dotless\Core\Plugins\IPlugin.cs" />
+    <Compile Include="dotless\Core\Plugins\IPluginConfigurator.cs" />
+    <Compile Include="dotless\Core\Plugins\IPluginParameter.cs" />
+    <Compile Include="dotless\Core\Plugins\IVisitor.cs" />
+    <Compile Include="dotless\Core\Plugins\IVisitorPlugin.cs" />
+    <Compile Include="dotless\Core\Plugins\PluginFinder.cs" />
+    <Compile Include="dotless\Core\Plugins\PluginParameter.cs" />
+    <Compile Include="dotless\Core\Plugins\RtlPlugin.cs" />
+    <Compile Include="dotless\Core\Plugins\VisitorPlugin.cs" />
+    <Compile Include="dotless\Core\Stylizers\ConsoleStylizer.cs" />
+    <Compile Include="dotless\Core\Stylizers\HtmlStylizer.cs" />
+    <Compile Include="dotless\Core\Stylizers\IStylizer.cs" />
+    <Compile Include="dotless\Core\Stylizers\PlainStylizer.cs" />
+    <Compile Include="dotless\Core\Utils\EnumerableExtensions.cs" />
+    <Compile Include="dotless\Core\Utils\Guard.cs" />
+    <Compile Include="dotless\Core\Utils\HslColor.cs" />
+    <Compile Include="dotless\Core\Utils\NodeHelper.cs" />
+    <Compile Include="dotless\Core\Utils\NumberExtensions.cs" />
+    <Compile Include="dotless\Core\Utils\ObjectExtensions.cs" />
+    <Compile Include="dotless\Core\Utils\StringExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="dotless\" />
+    <Folder Include="dotless\Core\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
