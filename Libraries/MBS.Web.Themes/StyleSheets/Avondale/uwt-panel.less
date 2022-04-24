@@ -1,0 +1,61 @@
+div.Panel
+{
+	background-color: #FFFFFF;
+	border-radius: 3px;
+	
+	&> div.Header, &> div.Content, &> div.Footer
+	{
+		padding: 10px 15px;
+	}
+	&> div.Header
+	{
+		background-color: #DDDDDD;
+		
+		border-top-left-radius: 3px;
+		border-top-right-radius: 3px;
+		
+		color: #333333;
+		
+		font-size: 12px;
+		font-weight: 500;
+		
+		line-height: 20px;
+	}
+	&> div.Footer
+	{
+		border-bottom-left-radius: 3px;
+		border-bottom-right-radius: 3px;
+	}
+	
+	&.Danger > div.Header
+	{
+		background-color: #CC4946;
+	}
+	&.Info > div.Header
+	{
+		background-color: #3A92AB;
+	}
+	&.Inverse > div.Header
+	{
+		background-color: #242A30;
+	}
+	&.Primary > div.Header
+	{
+		background-color: #2A72B5;
+	}
+	&.Success > div.Header
+	{
+		background-color: #008A8A;
+	}
+	&.Warning > div.Header
+	{
+		background-color: #C47D15;
+	}
+	&.Danger, &.Info, &.Inverse, &.Primary, &.Success, &.Warning
+	{
+		&> div.Header
+		{
+			color: #FFFFFF;
+		}
+	}
+}

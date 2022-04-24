@@ -1,0 +1,101 @@
+@TableBorderColor: #E2E7EB;
+@TableGridLineColor: #F5F5F5;
+
+@TableRowHoverBackgroundColor: @TableGridLineColor;
+@TableRowHoverForegroundColor: #000000;
+
+@TableRowSelectedBackgroundColor: darken(@ThemeColor, 5%); /* #E2E7E9; */
+@TableRowSelectedForegroundColor: #FFFFFF;
+
+@TableRowSelectedHoverBackgroundColor: lighten(@TableRowSelectedBackgroundColor, 5%);
+@TableRowSelectedHoverForegroundColor: @TableRowSelectedForegroundColor;
+
+table.uwt-listview
+{
+	background-color: #FFFFFF;
+	border-collapse: collapse;
+	
+	&> thead
+	{
+		border-bottom-color: @TableGridLineColor;
+		&> tr > th
+		{
+			border-bottom: solid 2px @TableBorderColor;
+			color: #242A30;
+			font-weight: 600;
+			a
+			{
+				color: inherit;
+				display: block;
+				text-align: left;
+				&:hover
+				{
+					text-decoration: none;
+				}
+			}
+		}
+	}
+	&> tbody
+	{
+		&> tr:nth-of-type(2n+1)
+		{
+			background-color: #f2f4f5;
+		}
+		&> tr
+		{
+			border: solid 1px transparent;
+			&.uwt-selected
+			{
+				border-color: @ThemeColor;
+				&> td
+				{
+					background-color: fade(@ThemeColor, 25%);
+				}
+			}
+		}
+	}
+	
+	&> div.uwt-listview-column-headers > div.uwt-listview-column-header > a,
+	&> div.uwt-listviewItems > div.uwt-listviewItem > div.uwt-listviewItemColumn
+	{
+		padding: 10px 15px;
+	}
+	&> div.uwt-listviewItems > div.uwt-listviewItem
+	{
+		&.Selected
+		{
+			background-color: @TableRowSelectedBackgroundColor;
+			color: @TableRowSelectedForegroundColor;
+		}
+	}
+	&.HasBorder
+	{
+		border-color: @TableBorderColor;
+	}
+	&[data-mode="Detail"]
+	{
+		&.GridLines
+		{
+			&> div.uwt-listview-column-headers > div.uwt-listview-column-header, &> div.uwt-listviewItems > div.uwt-listviewItem > div.uwt-listviewItemColumn
+			{
+				border: solid 1px @TableGridLineColor;
+			}
+		}
+	}
+	&.uwt-hottracking
+	{
+		&> div.uwt-listview-items
+		{
+			&> div.uwt-listview-item:hover
+			{
+				background-color: @TableRowHoverBackgroundColor;
+				color: @TableRowHoverForegroundColor;
+				&.Selected
+				{
+					background-color: @TableRowSelectedHoverBackgroundColor;
+					color: @TableRowSelectedHoverForegroundColor;
+				}
+			}
+		}
+	}
+}

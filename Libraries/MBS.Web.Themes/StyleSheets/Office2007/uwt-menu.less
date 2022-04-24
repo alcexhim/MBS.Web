@@ -1,0 +1,32 @@
+﻿ul.uwt-menu
+{
+	border: solid 1px #868686;
+	border-radius: 3px;
+	background-color: #fafafa;
+	
+	&> li
+	{
+		&> a
+		{
+			border: solid 1px transparent;
+			border-radius: 3px;
+			color: #00156e;
+			cursor: default;
+			margin: 2px;
+			
+			&:hover
+			{
+				border-top-color: #dbce99;
+				border-left-color: #c1a877;
+				border-right-color: #c1a877;
+				border-bottom-color: #d7d0b3;
+				
+				.linear-gradient-fourstop(#fffffb, #ffebb1, #ffd66c, #ffe59b);
+			}
+		}
+		&.uwt-separator
+		{
+			border-color: #c5c5c5;
+		}
+	}
+}

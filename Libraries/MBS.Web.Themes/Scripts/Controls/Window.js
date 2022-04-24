@@ -7,23 +7,23 @@ function Window(parentElement)
 	if (!parentElement)
 	{
 		parentElement = document.createElement("div");
-		parentElement.className = "Window";
+		parentElement.className = "uwt-window uwt-popup uwt-panel";
 		
 		var titleBar = document.createElement("div");
-		titleBar.className = "Header";
+		titleBar.className = "uwt-header";
 		
 		var title = document.createElement("span");
-		title.className = "Title";
+		title.className = "uwt-title";
 		titleBar.appendChild(title);
 		
 		parentElement.appendChild(titleBar);
 		
 		var content = document.createElement("div");
-		content.className = "Content";
+		content.className = "uwt-content";
 		parentElement.appendChild(content);
 		
 		var footer = document.createElement("div");
-		footer.className = "Buttons";
+		footer.className = "uwt-footer";
 		footer.NativeObject = this;
 		footer.style.display = "none";
 		parentElement.appendChild(footer);
@@ -57,17 +57,23 @@ function Window(parentElement)
 
 	this.GetLoading = function()
 	{
-		return System.ClassList.Contains(this.ParentElement, "Loading");
+		return System.ClassList.Contains(this.ParentElement, "uwt-loading");
 	};
+	
+	
+	/**
+	 * Sets whether the content is loading (displays a placeholder) or not.
+	 * @param value bool whether to display a loading placeholder
+	 */
 	this.SetLoading = function(value)
 	{
 		if (value)
 		{
-			return System.ClassList.Add(this.ParentElement, "Loading");
+			return System.ClassList.Add(this.ParentElement, "uwt-loading");
 		}
 		else
 		{
-			return System.ClassList.Remove(this.ParentElement, "Loading");
+			return System.ClassList.Remove(this.ParentElement, "uwt-loading");
 		}
 	};
 	
@@ -405,10 +411,19 @@ window.addEventListener("mouseup", function(e)
 });
 window.addEventListener("load", function(e)
 {
-	var items = document.getElementsByClassName("Window");
+	var items = document.getElementsByClassName("uwt-window");
 	for (var i = 0; i < items.length; i++)
 	{
 		items[i].NativeObject = new Window(items[i]);
+	}
+	
+	if (Popup.IgnoredClasses)
+	{
+		Popup.IgnoredClasses.push("uwt-window");
+	}
+	else
+	{
+		Popup.IgnoredClasses = [ "uwt-window" ];
 	}
 });
 

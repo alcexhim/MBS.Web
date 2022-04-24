@@ -1,30 +1,54 @@
-function Popup(id)
+function Popup(nativeHandle)
 {
-	this.ID = id;
-	this.Show = function()
+	this.NativeHandle = nativeHandle;
+	this.Show = function(x, y)
 	{
 		Popup.HideAll();
 		
-		var obj = document.getElementById("Popup_" + this.ID);
-		obj.classList.add("Visible");
+		System.ClassList.Add(this.NativeHandle, "uwt-visible");
+		
+		if (x !== undefined && y !== undefined)
+		{
+			this.NativeHandle.style.left = x.toString() + "px";
+			this.NativeHandle.style.top = y.toString() + "px";
+		}
 	};
 	this.Hide = function()
 	{
-		var obj = document.getElementById("Popup_" + this.ID);
-		obj.classList.remove("Visible");
+		System.ClassList.Remove(this.NativeHandle, "uwt-visible");
 	};
 }
+Popup.CssClass = "uwt-popup";
+
 Popup.HideAll = function()
 {
-	var elems = document.getElementsByClassName("Popup");
+	var elems = document.getElementsByClassName(Popup.CssClass);
 	for (var i = 0; i < elems.length; i++)
 	{
-		if (!System.ClassList.Contains(elems[i], "Visible-Always"))
+		if (!System.ClassList.Contains(elems[i], Popup.IgnoredClasses))
 		{
-			System.ClassList.Remove(elems[i], "Visible");
+			System.ClassList.Remove(elems[i], "uwt-visible");
 		}
 	}
 };
+
+window.addEventListener("load", function()
+{
+	var items = document.getElementsByClassName("uwt-popup");
+	for (var i = 0; i < items.length; i++)
+	{
+		items[i].NativeObject = new Popup(items[i]);
+	}
+
+	if (Popup.IgnoredClasses)
+	{
+		Popup.IgnoredClasses.push("uwt-always-visible");
+	}
+	else
+	{
+		Popup.IgnoredClasses = [ "uwt-always-visible" ];
+	}
+});
 
 window.addEventListener("mousedown", function(e)
 {
@@ -44,7 +68,7 @@ window.addEventListener("mousedown", function(e)
 	
 	while (sender != null)
 	{
-		if (System.ClassList.Contains(sender, "Popup"))
+		if (System.ClassList.Contains(sender, Popup.CssClass))
 		{
 			// do not close the popup when we click inside itself
 			e.preventDefault();

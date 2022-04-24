@@ -7,8 +7,6 @@
     <OutputType>Library</OutputType>
     <RootNamespace>MBS.Web.Controls</RootNamespace>
     <AssemblyName>MBS.Web.Controls</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
-    <ReleaseVersion>1.0.*</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -38,11 +36,31 @@
     <Compile Include="ActionPreviewButton.cs" />
     <Compile Include="ListView.cs" />
     <Compile Include="TabContainer.cs" />
+    <Compile Include="ProgressBar.cs" />
+    <Compile Include="Button.cs" />
+    <Compile Include="Popup.cs" />
+    <Compile Include="Slider.cs" />
+    <Compile Include="DateTimePicker.cs" />
+    <Compile Include="Meter.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="TextBox.cs" />
+    <Compile Include="Toolbar.cs" />
+    <Compile Include="Window.cs" />
+    <Compile Include="Wunderbar.cs" />
+    <Compile Include="TreeView.cs" />
+    <Compile Include="StackContainer.cs" />
+    <Compile Include="Ribbon.cs" />
+    <Compile Include="ButtonGroup.cs" />
+    <Compile Include="SpinButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MBS.Web\MBS.Web.csproj">
       <Project>{D30649B8-EAF2-4D4D-968F-A7C65572F7FA}</Project>
       <Name>MBS.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\MBS.Framework\MBS.Framework\MBS.Framework.csproj">
+      <Project>{00266B21-35C9-4A7F-A6BA-D54D7FDCC25C}</Project>
+      <Name>MBS.Framework</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

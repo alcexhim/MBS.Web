@@ -99,6 +99,7 @@ function ListView(parentElement)
 	this.EmptyMessageElement = this.ParentElement.children[1];
 	this.ItemsElement = this.ParentElement.children[2];
 	
+	/*
 	this.AddRemoveColumnHeaderElement = this.ColumnHeaderElement.children[0];
 	this.AddRemoveColumnHeaderAddColumnButton = this.AddRemoveColumnHeaderElement.children[0];
 	
@@ -107,6 +108,7 @@ function ListView(parentElement)
 	{
 		this.NativeObject.InsertRowAfter(-1);
 	});
+	*/
 	
 	/**
 	 * Inserts a row after the row at the specified index.
@@ -182,29 +184,33 @@ function ListView(parentElement)
 			row.m_Index = i;
 			
 			var AddRemoveRowItemColumnElement = row.children[0];
+			
 			var AddRowButton = AddRemoveRowItemColumnElement.children[0];
-			AddRowButton.m_Index = i;
+			if (AddRowButton)
+			{
+				AddRowButton.m_Index = i;
+				AddRowButton.NativeObject = this;
+				AddRowButton.addEventListener("click", function(e)
+				{
+					this.NativeObject.InsertRowAfter(this.m_Index);
+				});
+			}
 			
 			var RemoveRowButton = AddRemoveRowItemColumnElement.children[1];
-			RemoveRowButton.m_Index = i;
+			if (RemoveRowButton)
+			{
+				RemoveRowButton.m_Index = i;
+				RemoveRowButton.NativeObject = this;
+				RemoveRowButton.addEventListener("click", function(e)
+				{
+					this.NativeObject.Rows.RemoveAt(this.m_Index);
+				});
+			}
 			
 			// if it has already been processed, skip it
 			if (row.NativeObject) continue;
-			
+		
 			row.NativeObject = this;
-			
-			AddRowButton.NativeObject = this;
-			AddRowButton.addEventListener("click", function(e)
-			{
-				this.NativeObject.InsertRowAfter(this.m_Index);
-			});
-			
-			RemoveRowButton.NativeObject = this;
-			RemoveRowButton.addEventListener("click", function(e)
-			{
-				this.NativeObject.Rows.RemoveAt(this.m_Index);
-			});
-			
 			row.addEventListener("mousedown", function(e)
 			{
 				if (e.ctrlKey && System.ClassList.Contains(this.NativeObject.ParentElement, "MultiSelect"))
@@ -461,7 +467,7 @@ function ListView(parentElement)
 	
 	this.ParentElement.addEventListener("mousedown", function(e)
 	{
-		this.NativeObject.SelectedRows.Clear();
+		// this.NativeObject.SelectedRows.Clear();
 		// e.preventDefault();
 		// e.stopPropagation();
 		return false;
@@ -471,7 +477,7 @@ function ListView(parentElement)
 }
 window.addEventListener("load", function(e)
 {
-	var items = document.getElementsByClassName("ListView");
+	var items = document.getElementsByClassName("uwt-listview");
 	for (var i = 0; i < items.length; i++)
 	{
 		items[i].NativeObject = new ListView(items[i]);

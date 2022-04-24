@@ -1,0 +1,33 @@
+﻿ul.uwt-treeview
+{
+	border: solid 1px #6592cf;
+}
+ul.uwt-treeview, ul.uwt-treeview ul
+{
+	background-color: #ffffff;
+	&> li
+	{
+		&> span.uwt-treeview-item
+		{
+			border: solid 1px transparent;
+			border-radius: 3px;
+			color: #00156e;
+			cursor: default;
+			margin: 2px;
+			
+			&:hover
+			{
+				border-top-color: #dbce99;
+				border-left-color: #c1a877;
+				border-right-color: #c1a877;
+				border-bottom-color: #d7d0b3;
+				
+				.linear-gradient-fourstop(#fffffb, #ffebb1, #ffd66c, #ffe59b);
+			}
+		}
+	}
+}
+div.uwt-sidebar ul > li > ul
+{
+	background-color: unset;
+}

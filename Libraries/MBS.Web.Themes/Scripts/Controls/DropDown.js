@@ -276,11 +276,4 @@ window.addEventListener("load", function(e)
 			});
 		})(i);
 	}
-	
-	// retrofit SELECT elements
-	var selects = document.getElementsByTagName("SELECT");
-	for (var i = 0; i < selects.length; i++)
-	{
-		selects[i].NativeObject = new DropDownWrapper(selects[i]);
-	}
 });

@@ -12,13 +12,13 @@ function Button(parentElement)
 	
 	this.getDropDownOpened = function()
 	{
-		return System.ClassList.Contains(this.DropDownContentElement, "Visible");
+		return System.ClassList.Contains(this.DropDownContentElement, "uwt-visible");
 	};
 	this.setDropDownOpened = function(value)
 	{
 		if (value)
 		{
-			System.ClassList.Add(this.DropDownContentElement, "Visible");
+			System.ClassList.Add(this.DropDownContentElement, "uwt-visible");
 			if (this.ParentElement.getAttribute("data-pwt-dropdown-direction") == "right")
 			{
 				this.DropDownContentElement.style.left = (this.ParentElement.offsetLeft - this.ParentElement.offsetWidth) + "px";
@@ -26,7 +26,7 @@ function Button(parentElement)
 		}
 		else
 		{
-			System.ClassList.Remove(this.DropDownContentElement, "Visible");
+			System.ClassList.Remove(this.DropDownContentElement, "uwt-visible");
 		}
 	};
 	this.toggleDropDownOpened = function()
@@ -36,8 +36,8 @@ function Button(parentElement)
 	
 	this.isDropDownRequired = function()
 	{
-		return System.ClassList.Contains(this.ParentElement, "pwt-DropDownRequired");
-	}
+		return this.ParentElement.hasAttribute("data-dropdown-required") && this.parentElement.getAttribute("data-dropdown-required") == "true";
+	};
 
 	this.ButtonElement.addEventListener("click", function(e)
 	{
@@ -59,7 +59,7 @@ function Button(parentElement)
 }
 window.addEventListener("load", function(e)
 {
-	var items = document.getElementsByClassName("pwt-Button");
+	var items = document.getElementsByClassName("uwt-button");
 	for (var i = 0; i < items.length; i++)
 	{
 		if (items[i].tagName.toLowerCase() != "div") continue;

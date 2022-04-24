@@ -7,7 +7,6 @@
     <OutputType>Library</OutputType>
     <RootNamespace>MBS.Web</RootNamespace>
     <AssemblyName>MBS.Web</AssemblyName>
-    <ReleaseVersion>1.0.*</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,10 +36,25 @@
     <Compile Include="ConfigurationSections\Routing\RoutesCollection.cs" />
     <Compile Include="ConfigurationSections\Routing\RouteConfigurationElement.cs" />
     <Compile Include="ConfigurationSections\Routing\RoutingConfigurationSection.cs" />
+    <Compile Include="WebApplication.cs" />
+    <Compile Include="ClientConnectedEventArgs.cs" />
+    <Compile Include="ClientConnectingEventArgs.cs" />
+    <Compile Include="WebRequest.cs" />
+    <Compile Include="WebResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ConfigurationSections\" />
     <Folder Include="ConfigurationSections\Routing\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\MBS.Framework\MBS.Framework\MBS.Framework.csproj">
+      <Project>{00266B21-35C9-4A7F-A6BA-D54D7FDCC25C}</Project>
+      <Name>MBS.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\UniversalEditor\Libraries\UniversalEditor.Core\UniversalEditor.Core.csproj">
+      <Project>{2D4737E6-6D95-408A-90DB-8DFF38147E85}</Project>
+      <Name>UniversalEditor.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

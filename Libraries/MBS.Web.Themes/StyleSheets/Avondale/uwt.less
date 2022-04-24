@@ -1,0 +1,67 @@
+@import "Fonts/SourceSansPro/SourceSansPro.css";
+
+body
+{
+	background-color: @PageBackgroundColor;
+	color: #333;
+	font-family: "Source Sans Pro", "Segoe UI", "Droid Sans", "Tahoma", "Arial", sans-serif;
+	/* font-size: 14px; */
+	font-size: 16px;
+	
+	margin: 0px;
+	
+	&.Loading
+	{
+		background: @PageBackgroundColor !important;
+	}
+	
+	overflow: auto;
+}
+body > div.Content
+{
+	padding: 24px;
+}
+
+::selection
+{
+	background-color: @ThemeColor;
+	color: #FFFFFF;
+}
+::-moz-selection
+{
+	background-color: @ThemeColor;
+	color: #FFFFFF;
+}
+
+@ThemeColorPrimaryLight: #cce3f8;
+@ThemeColorPrimary: #348fe2;
+
+@ThemeColorInfoLight: #d2edf5;
+@ThemeColorInfo: #49b6d6;
+
+@ThemeColorPurpleLight: #dcdeed;
+@ThemeColorPurple: #727cb6;
+
+@ThemeColorIndigoLight: #e1d4f7;
+@ThemeColorIndigo: #8753de;
+
+@ThemeColorSuccessLight: #bfeaea;
+@ThemeColorSuccess: #00acac;
+
+@ThemeColorGreenLight: #cceacc;
+@ThemeColorGreen: #32a932;
+
+@ThemeColorLimeLight: #e3f2d2;
+@ThemeColorLime: #90ca4b;
+
+@ThemeColorWarningLight: #fde6c6;
+@ThemeColorWarning: #f59c1a;
+
+@ThemeColorYellowLight: #fff6bf;
+@ThemeColorYellow: #ffd900;
+
+@ThemeColorDangerLight: #ffd6d5;
+@ThemeColorDanger: #ff5b57;
+
+@ThemeColorPinkLight: #fed5e5;
+@ThemeColorPink: #fb5597;

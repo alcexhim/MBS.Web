@@ -1,4 +1,57 @@
-﻿a.uwt-button, button, input[type=button], input[type=submit], input[type=reset]
+﻿@ButtonSelector: 'a.uwt-button, button, input[type=button], input[type=submit], input[type=reset], div.uwt-button > a';
+
+(~'@{ButtonSelector}')
 {
-	padding: 7px 15px;
+	display: inline-block;
+	font-weight: 400;
+	text-align: center;
+	vertical-align: middle;
+	
+	.user-select(none);
+	
+	background-color: transparent;
+	border: 1px solid transparent;
+	padding: .438rem 1.125rem;
+	font-size: .894rem;
+	line-height: 1.54;
+	
+	min-width: 80px;
+}
+
+div.uwt-button
+{
+	&> button.uwt-button-dropdownbutton
+	{
+		display: none;
+	}
+	&.uwt-button-hasdropdown
+	{
+		&> button.uwt-button-dropdownbutton
+		{
+			padding-left: 8px;
+			padding-right: 8px;
+			display: inline-block;
+			&::before
+			{
+				content: "⏷";
+				display: block;
+			}
+		}
+		&.uwt-button-requiredropdown input:nth-child(1), &.uwt-button-requiredropdown a:nth-child(1)
+		{
+			display: none;
+		}
+		&:not(.uwt-button-requiredropdown)
+		{
+			/* split dropdown button styles */
+			&> input:first-child
+			{
+				border-right: none;
+			}
+			&> input.uwt-button-dropdownbutton
+			{
+				border-left: none;
+			}
+		}
+	}
 }

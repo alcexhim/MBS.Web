@@ -11,11 +11,11 @@ function CheckBox(parentElement)
 		this.ParentElement.checked = this.mvarChecked;
 		if (this.mvarChecked)
 		{
-			this.NewParentElement.className = "CheckBox Checked";
+			this.NewParentElement.className = "uwt-checkbox uwt-checked";
 		}
 		else
 		{
-			this.NewParentElement.className = "CheckBox";
+			this.NewParentElement.className = "uwt-checkbox";
 		}
 		
 		if (!changed) return;
@@ -31,7 +31,30 @@ function CheckBox(parentElement)
 	}
 	
 	var child = document.createElement("div");
-	child.className = "CheckBox";
+	child.className = "uwt-checkbox";
+	child.tabIndex = "0";
+	child.addEventListener("keydown", function(e)
+	{
+		switch (e.keyCode)
+		{
+			case 32:
+			{
+				this.NativeObject.ToggleChecked();
+				e.preventDefault();
+				e.stopPropagation();
+				break;
+			}
+			default:
+			{
+			}
+		}
+	});
+	
+	if (System.ClassList.Contains(parentElement, "uwt-switch"))
+	{
+		System.ClassList.Add(child, "uwt-switch");
+	}
+	
 	child.NativeObject = this;
 	child.addEventListener("click", function(e)
 	{

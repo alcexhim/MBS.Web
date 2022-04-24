@@ -1,4 +1,26 @@
-﻿input, textarea
+﻿input[type=text], input[type=password], textarea
 {
 	padding: 10px;
+}
+div.uwt-textbox
+{
+	&.uwt-selection-required
+	{
+		&> div > input
+		{
+			cursor: default;
+			&:focus
+			{
+				cursor: text;
+			}
+		}
+	}
+	&> select
+	{
+		display: none;
+	}
+}
+div.uwt-popup.uwt-textbox-popup
+{
+	background: #ffff;
 }

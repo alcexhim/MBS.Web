@@ -6,11 +6,11 @@ function TextBoxItem(parent, value, title)
 	
 	this.GetSelected = function()
 	{
-		for (var i = 0; i < this.NativeObject.SelectElement.childNodes.length; i++)
+		for (var i = 0; i < this.NativeObject.SelectElement.children.length; i++)
 		{
-			if (this.NativeObject.SelectElement.childNodes[i].value == this.Value)
+			if (this.NativeObject.SelectElement.children[i].value == this.Value)
 			{
-				if (this.NativeObject.SelectElement.childNodes[i].hasAttribute("selected")) return true;
+				if (this.NativeObject.SelectElement.children[i].hasAttribute("selected")) return true;
 			}
 		}
 		return false;
@@ -18,27 +18,27 @@ function TextBoxItem(parent, value, title)
 	this.SetSelected = function(value)
 	{
 		var changed = false;
-		for (var i = 0; i < this.NativeObject.SelectElement.childNodes.length; i++)
+		for (var i = 0; i < this.NativeObject.SelectElement.children.length; i++)
 		{
-			if (this.NativeObject.SelectElement.childNodes[i].value == this.Value)
+			if (this.NativeObject.SelectElement.children[i].value == this.Value)
 			{
 				if (value)
 				{
-					changed = changed || !this.NativeObject.SelectElement.childNodes[i].hasAttribute("selected");
-					this.NativeObject.SelectElement.childNodes[i].setAttribute("selected", "selected");
+					changed = changed || !this.NativeObject.SelectElement.children[i].hasAttribute("selected");
+					this.NativeObject.SelectElement.children[i].setAttribute("selected", "selected");
 				}
 				else
 				{
-					changed = changed || !this.NativeObject.SelectElement.childNodes[i].hasAttribute("selected");
-					this.NativeObject.SelectElement.childNodes[i].removeAttribute("selected", "selected");
+					changed = changed || !this.NativeObject.SelectElement.children[i].hasAttribute("selected");
+					this.NativeObject.SelectElement.children[i].removeAttribute("selected", "selected");
 				}
 			}
 			else
 			{
 				if (!this.NativeObject.IsMultiSelect())
 				{
-					changed = changed || this.NativeObject.SelectElement.childNodes[i].hasAttribute("selected");
-					this.NativeObject.SelectElement.childNodes[i].removeAttribute("selected");
+					changed = changed || this.NativeObject.SelectElement.children[i].hasAttribute("selected");
+					this.NativeObject.SelectElement.children[i].removeAttribute("selected");
 				}
 			}
 		}
@@ -53,15 +53,29 @@ function TextBoxItem(parent, value, title)
 function TextBox(parentElement)
 {
 	this.ParentElement = parentElement;
-	this.TextBoxElement = parentElement.children[0].children[1];
-	this.PopupElement = parentElement.children[1];
-	this.DropDownElement = this.PopupElement.children[0];
-	this.SelectElement = parentElement.children[2];
+	
+	this.TextBoxElement = parentElement;
+	this.PopupElement = document.createElement("div");
+	this.PopupElement.className = "uwt-popup uwt-textbox-popup";
+	
+	this.SpinnerElement = document.createElement("div");
+	this.SpinnerElement.className = "uwt-spinner";
+	this.PopupElement.appendChild(this.SpinnerElement);
+	
+	var dropDownElement = document.createElement("div");
+	dropDownElement.className = "uwt-dropdown-content";
+	this.PopupElement.appendChild(dropDownElement);
+	
+	this.DropDownElement = this.PopupElement.children[1];
+	
+	parentElement.parentElement.appendChild(this.PopupElement);
 	
 	this.EventHandlers =
 	{
 		"DropDownOpening": new System.EventHandler(),
 		"DropDownOpened": new System.EventHandler(),
+		"DropDownClosing": new System.EventHandler(),
+		"DropDownClosed": new System.EventHandler(),
 		"SelectionChanged": new System.EventHandler()
 	};
 	
@@ -69,11 +83,11 @@ function TextBox(parentElement)
 	{
 		if (value)
 		{
-			System.ClassList.Add(this.ParentElement, "Loading");
+			System.ClassList.Add(this.PopupElement, "uwt-loading");
 		}
 		else
 		{
-			System.ClassList.Remove(this.ParentElement, "Loading");
+			System.ClassList.Remove(this.PopupElement, "uwt-loading");
 		}
 	};
 	
@@ -90,31 +104,31 @@ function TextBox(parentElement)
 	{
 		var selectedItems = [];
 		var text = "";
-		for (var i = 0; i < this.SelectElement.childNodes.length; i++)
+		for (var i = 0; i < this.SelectElement.children.length; i++)
 		{
-			if (this.SelectElement.childNodes[i].hasAttribute("selected"))
+			if (this.SelectElement.options[i].hasAttribute("selected"))
 			{
-				selectedItems.push(new TextBoxItem(this, this.SelectElement.childNodes[i].value, this.SelectElement.childNodes[i].innerHTML));
+				selectedItems.push(new TextBoxItem(this, this.SelectElement.options[i].value, this.SelectElement.options[i].label));
 			}
 		}
-		for (var i = 0; i < this.DropDownElement.childNodes.length; i++)
+		for (var i = 0; i < this.DropDownElement.children.length; i++)
 		{
-			System.ClassList.Remove(this.DropDownElement.childNodes[i], "Selected");
+			System.ClassList.Remove(this.DropDownElement.children[i], "uwt-selected");
 		}
 		for (var i = 0; i < selectedItems.length; i++)
 		{
 			text += selectedItems[i].Title;
 			if (i < selectedItems.length - 1) text += "; ";
 
-			for (var j = 0; j < this.DropDownElement.childNodes.length; j++)
+			for (var j = 0; j < this.DropDownElement.children.length; j++)
 			{
-				if (this.DropDownElement.childNodes[j].childNodes[0].getAttribute("data-value") == selectedItems[i].Value)
+				if (this.DropDownElement.children[j].children[0].getAttribute("data-value") == selectedItems[i].Value)
 				{
-					System.ClassList.Add(this.DropDownElement.childNodes[j], "Selected");
+					System.ClassList.Add(this.DropDownElement.children[j], "uwt-selected");
 				}
 			}
 		}
-		this.TextBoxElement.placeholder = text;
+		this.TextBoxElement.value = text;
 		this.ParentElement.selectedItems = selectedItems;
 	}
 	
@@ -171,10 +185,12 @@ function TextBox(parentElement)
 	});
 	this.TextBoxElement.addEventListener("blur", function(e)
 	{
+		/*
 		if (this.value == "" && this.placeholder != "")
 		{
 			this.value = this.placeholder;
 		}
+		*/
 	});
 	this.TextBoxElement.addEventListener("keydown", function(e)
 	{
@@ -187,20 +203,20 @@ function TextBox(parentElement)
 				var firstI = -1;
 				for (var i = 0; i < no.DropDownElement.children.length; i++)
 				{
-					if (!System.ClassList.Contains(no.DropDownElement.children[i], "Visible"))
+					if (!System.ClassList.Contains(no.DropDownElement.children[i], "uwt-visible"))
 						continue;
 					
 					if (firstI == -1)
 						firstI = i;
 					
-					if (System.ClassList.Contains(no.DropDownElement.children[i], "Hover"))
+					if (System.ClassList.Contains(no.DropDownElement.children[i], "uwt-active"))
 					{
-						System.ClassList.Remove(no.DropDownElement.children[i], "Hover");
+						System.ClassList.Remove(no.DropDownElement.children[i], "uwt-active");
 						if (e.keyCode == KeyboardKeys.ArrowDown)
 						{
 							if (i < no.DropDownElement.children.length - 1)
 							{
-								System.ClassList.Add(no.DropDownElement.children[i + 1], "Hover");
+								System.ClassList.Add(no.DropDownElement.children[i + 1], "uwt-active");
 								found = true;
 							}
 						}
@@ -208,7 +224,7 @@ function TextBox(parentElement)
 						{
 							if (i > 0)
 							{
-								System.ClassList.Add(no.DropDownElement.children[i - 1], "Hover");
+								System.ClassList.Add(no.DropDownElement.children[i - 1], "uwt-active");
 								found = true;
 							}
 						}
@@ -219,11 +235,11 @@ function TextBox(parentElement)
 				{
 					if (e.keyCode == KeyboardKeys.ArrowDown)
 					{
-						System.ClassList.Add(no.DropDownElement.children[firstI], "Hover");
+						System.ClassList.Add(no.DropDownElement.children[firstI], "uwt-active");
 					}
 					else if (e.keyCode == KeyboardKeys.ArrowUp)
 					{
-						System.ClassList.Add(no.DropDownElement.children[no.DropDownElement.children.length - (firstI + 1)], "Hover");
+						System.ClassList.Add(no.DropDownElement.children[no.DropDownElement.children.length - (firstI + 1)], "uwt-active");
 					}
 				}
 			}
@@ -233,12 +249,12 @@ function TextBox(parentElement)
 			// activate the selected menu item
 			for (var i = 0; i < no.DropDownElement.children.length; i++)
 			{
-				if (!System.ClassList.Contains(no.DropDownElement.children[i], "Visible"))
+				if (!System.ClassList.Contains(no.DropDownElement.children[i], "uwt-visible"))
 					continue;
 				
-				if (System.ClassList.Contains(no.DropDownElement.children[i], "Hover"))
+				if (System.ClassList.Contains(no.DropDownElement.children[i], "uwt-active"))
 				{
-					System.ClassList.Remove(no.DropDownElement.children[i], "Hover");
+					System.ClassList.Remove(no.DropDownElement.children[i], "uwt-active");
 					
 					var a = no.DropDownElement.children[i].children[0];
 					if (e.ctrlKey)
@@ -249,7 +265,9 @@ function TextBox(parentElement)
 					{
 						window.location.href = a.href;
 					}
-					break;2
+					
+					no.DropDown.Close();
+					break;
 				}
 			}
 		}
@@ -257,40 +275,46 @@ function TextBox(parentElement)
 	
 	this.RefreshTimeout = null;
 	
-	this.TextBoxElement.onkeyup = function(sender, e)
+	this.TextBoxElement.NativeObject = this;
+	this.TextBoxElement.addEventListener("keyup", function(e)
 	{
-		if (e.keyCode == 27) // ESC
+		switch (e.keyCode)
 		{
-			sender.DropDown.Close();
-		}
-		else
-		{
-			if (sender.RefreshTimeout != null)
+			case 27:
 			{
-				window.clearTimeout(sender.RefreshTimeout);
+				this.NativeObject.DropDown.Close();
+				break;
 			}
-			sender.RefreshTimeout = window.setTimeout(function()
+			default:
 			{
-				sender.Refresh();
-			}, 100);
+				if (this.NativeObject.RefreshTimeout != null)
+				{
+					window.clearTimeout(this.NativeObject.RefreshTimeout);
+				}
+				this.NativeObject.RefreshTimeout = window.setTimeout(function(thiss)
+				{
+					thiss.NativeObject.Refresh();
+				}, 100, this);
+				break;
+			}
 		}
-	}.PrependArgument(this);
+	});
 	
-	for (var i = 0; i < this.DropDownElement.childNodes.length; i++)
+	for (var i = 0; i < this.DropDownElement.children.length; i++)
 	{
-		this.DropDownElement.childNodes[i].childNodes[0].NativeObject = this;
-		this.DropDownElement.childNodes[i].childNodes[0].addEventListener("click", function(e)
+		this.DropDownElement.children[i].children[0].NativeObject = this;
+		this.DropDownElement.children[i].children[0].addEventListener("click", function(e)
 		{
 			if (!this.NativeObject.IsMultiSelect())
 			{
-				this.NativeObject.GetItemByValue(this.getAttribute("data-value")).SetSelected(true);
+				this.NativeObject.GetItemByValue(this.parentElement.getAttribute("data-value")).SetSelected(true);
 				
-				this.NativeObject.DropDown.Close();
-				this.NativeObject.TextBoxElement.blur();
+				// this.NativeObject.DropDown.Close();
+				this.NativeObject.PopupElement.focus();
 			}
 			else
 			{
-				var item = this.NativeObject.GetItemByValue(this.getAttribute("data-value"));
+				var item = this.NativeObject.GetItemByValue(this.parentElement.getAttribute("data-value"));
 				item.SetSelected(!item.GetSelected());
 			}
 			
@@ -305,13 +329,21 @@ function TextBox(parentElement)
 		this.UpdateSelectedItems();
 		return this.ParentElement.selectedItems;
 	}
+	this.GetItemByIndex = function(index)
+	{
+		if (index >= 0 && index < this.SelectElement.options.length)
+		{
+			return new TextBoxItem(this, this.SelectElement.options[index].value, this.SelectElement.options[index].label);
+		}
+		return null;
+	};
 	this.GetItemByValue = function(value)
 	{
-		for (var i = 0; i < this.SelectElement.childNodes.length; i++)
+		for (var i = 0; i < this.SelectElement.options.length; i++)
 		{
-			if (this.SelectElement.childNodes[i].value == value)
+			if (this.SelectElement.options[i].value == value || (this.SelectElement.options[i].value == null && this.SelectElement.options[i].label == value))
 			{
-				return new TextBoxItem(this, this.SelectElement.childNodes[i].value, this.SelectElement.childNodes[i].innerHTML);
+				return new TextBoxItem(this, this.SelectElement.options[i].value, this.SelectElement.options[i].label);
 			}
 		}
 		return null;
@@ -320,23 +352,30 @@ function TextBox(parentElement)
 	this.Refresh = function()
 	{
 		var ret = null;
+		this.SetLoading(true);
 		if (this.Suggest)
 		{
 			ret = this.Suggest(this.GetText());
 		}
 		
+		this.DropDownElement.innerHTML = "";
 		if (ret != null)
 		{
-			var html = "";
-			html += this.FormatStart();
-			for (var i = 0; i < ret.length; i++)
+			var elem = this.BuildDropDownContainer();
+			if (elem)
 			{
-				html += this.FormatItem(ret[i], (i % 2) != 0);
+				this.DropDownElement.appendChild(elem);
+				
+				for (var i = 0; i < ret.length; i++)
+				{
+					var elemChild = this.BuildDropDownItem(ret[i], (i % 2) != 0);
+					if (elemChild)
+						elem.appendChild(elemChild);
+				}
 			}
-			html += this.FormatEnd();
-			
-			this.DropDown.SetInnerHTML(html);
 			this.DropDown.Open();
+			
+			this.SetLoading(false);
 		}
 		else if (this.SuggestionURL)
 		{
@@ -346,29 +385,32 @@ function TextBox(parentElement)
 			{
 				if (xhr.readyState === 4)
 				{
+					xhr.parentTextbox.SetLoading(false);
+					
 					if (xhr.status != 200)
 					{
 						console.log("TextBox: XMLHttpRequest returned response code " + xhr.status + ": " + xhr.statusText);
 						return;
 					}
 					
-					var html = "";
-					html += xhr.parentTextbox.FormatStart();
+					var elem = xhr.parentTextbox.BuildDropDownContainer();
 					var obj = JSON.parse(xhr.responseText);
 					if (obj.result == "success")
 					{
 						for (var i = 0; i < obj.items.length; i++)
 						{
-							html += xhr.parentTextbox.FormatItem(obj.items[i]);
+							var elemChild = xhr.parentTextbox.BuildDropDownItem(obj.items[i]);
+							elem.appendChild(elemChild);
 						}
 					}
-					html += xhr.parentTextbox.FormatEnd();
 					
-					xhr.parentTextbox.DropDown.SetInnerHTML(html);
+					xhr.parentTextbox.DropDownElement.appendChild(elem);
 					xhr.parentTextbox.DropDown.Open();
 				}
 			};
-			xhr.open('GET', this.SuggestionURL.replace(/\%1/g, this.GetText()), true);
+			
+			var url = System.ExpandRelativePath(this.SuggestionURL);
+			xhr.open('GET', url.replace(/\%1/g, this.GetText()), true);
 			xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 			xhr.send(null);  // No data need to send along with the request.
 		}
@@ -381,18 +423,14 @@ function TextBox(parentElement)
 				var spanText = ul.children[i].children[0].children[1];
 				if (System.StringMethods.Contains(spanText.innerHTML.toLowerCase(), this.GetText().toLowerCase()))
 				{
-					System.ClassList.Add(ul.childNodes[i], "Visible");
+					System.ClassList.Add(ul.children[i], "uwt-visible");
 				}
 				else
 				{
-					System.ClassList.Remove(ul.childNodes[i], "Visible");
+					System.ClassList.Remove(ul.children[i], "uwt-visible");
 				}
 			}
 		}
-	};
-	this.FormatStart = function()
-	{
-		return "<div class=\"Menu\" style=\"width: 100%;\">";
 	};
 	this.FormatItemID = function(item)
 	{
@@ -400,27 +438,50 @@ function TextBox(parentElement)
 	};
 	this.FormatItemText = function(item)
 	{
-		return "<span class=\"Title\">" + item.Title + "</span>"
-			+ "<span class=\"Subtitle\">" + item.Subtitle + "</span>"
-			+ "<span class=\"Description\">" + item.Description + "</span>";
+		return "<span class=\"uwt-title\">" + item.title + "</span>"
+			+ "<span class=\"uwt-subtitle\">" + item.subtitle + "</span>"
+			+ "<span class=\"uwt-content\">" + item.description + "</span>";
 	};
 	this.FormatItemTargetURL = function(item)
 	{
-		return item.TargetURL;
+		return System.ExpandRelativePath(item.targetUrl);
 	};
-	this.FormatItem = function(item, alternate)
+	
+	this.BuildDropDownContainer = function()
 	{
-		var html = "<a";
+		var elem = document.createElement("ul");
+		elem.className = "uwt-menu";
+		return elem;
+	};
+	this.BuildDropDownItem = function(item, alternate)
+	{
+		var elem = document.createElement("li");
+		elem.className = "uwt-visible";
 		if (alternate)
 		{
-			html += " class=\"Alternate\"";
+			elem.className = "uwt-visible uwt-alternate";
 		}
-		html += " href=\"" + this.FormatItemTargetURL(item) + "\" onclick=\"" + this.ID + ".AddItem('" + this.FormatItemID(item) + "');\">" + this.FormatItemText(item) + "</a>";
-		return html;
+		
+		var a = this.BuildDropDownItemContent(item, alternate);
+		elem.appendChild(a);
+		return elem;
 	};
-	this.FormatEnd = function()
+	this.BuildDropDownItemContent = function(item, alternate)
 	{
-		return "</div>";
+		var a = document.createElement("a");
+		a.href = this.FormatItemTargetURL(item);
+		a._NativeObject = this;
+		a._Item = item;
+		a.addEventListener("click", function(e)
+		{
+			if (this._NativeObject.AddItem(this._NativeObject, this._Item))
+			{
+				e.preventDefault();
+				e.stopPropagation();
+			}
+		});
+		a.innerHTML = this.FormatItemText(item);
+		return a;
 	};
 	
 	this.DropDown = 
@@ -443,14 +504,21 @@ function TextBox(parentElement)
 			dropdown.style.minWidth = this.NativeObject.ParentElement.offsetWidth + "px";
 			popup.style.minWidth = this.NativeObject.ParentElement.offsetWidth + "px";
 			
-			System.ClassList.Add(dropdown, "Visible");
+			System.ClassList.Add(popup, "uwt-visible");
 			
 			this.NativeObject.EventHandlers.DropDownOpened.Execute(this.NativeObject, EventArgs.Empty);
 		},
 		"Close": function()
 		{
-			var popup = this.NativeObject.DropDownElement;
-			System.ClassList.Remove(popup, "Visible");
+			var ee = new CancelEventArgs();
+			this.NativeObject.EventHandlers.DropDownClosing.Execute(this.NativeObject, ee);
+			
+			if (ee.Cancel) return;
+			
+			var popup = this.NativeObject.PopupElement;
+			System.ClassList.Remove(popup, "uwt-visible");
+			
+			this.NativeObject.EventHandlers.DropDownClosed.Execute(this.NativeObject, EventArgs.Empty);
 		}
 	};
 	this.DropDown.NativeObject = this;
@@ -464,9 +532,9 @@ function TextBox(parentElement)
 			this._items.push(item);
 			
 			var li = document.createElement("li");
-			System.ClassList.Add(li, "MenuItem");
-			System.ClassList.Add(li, "Command");
-			System.ClassList.Add(li, "Visible");
+			System.ClassList.Add(li, "uwt-menuitem");
+			System.ClassList.Add(li, "uwt-command");
+			System.ClassList.Add(li, "uwt-visible");
 			
 			li._item = item;
 			
@@ -497,25 +565,12 @@ function TextBox(parentElement)
 	};
 	this.Items.NativeObject = this;
 	
-	/*
-	
-	this.Suggest = function(filter)
-	{
-		return null;
-	};
-	
-	this.SelectedItems = new Array();
-	
-	this.CountItems = function()
-	{
-		var items = this.GetElement("items");
-		return items.childNodes.length - 1;
-	};
-	
-	this.AddItem = function(item)
+	this.EnableMultipleSelection = this.ParentElement.getAttribute("data-multiple-selection") == "true";
+	this.AddItem = function(textbox, item)
 	{
 		if (this.EnableMultipleSelection)
 		{
+			/*
 			var i = this.CountItems();
 			
 			var html = this.GetElement("items").innerHTML;
@@ -528,29 +583,130 @@ function TextBox(parentElement)
 			this.GetElement("popup").style.display = "none";
 			
 			this.SelectedItems.push(item);
+			*/
 		}
 		else
 		{
+			/*
 			this.SelectedItems = new Array();
 			this.SelectedItems.push(item);
 			this.SetText(this.FormatItemText(item));
+			*/
 		}
 	};
+	/*
+	
+	this.Suggest = function(filter)
+	{
+		return null;
+	};
+	
+	this.SelectedItems = new Array();
+	
+	this.CountItems = function()
+	{
+		var items = this.GetElement("items");
+		return items.children.length - 1;
+	};
+	
 	this.RemoveItemAtIndex = function(index)
 	{
 		var items = this.GetElement("items");
 		index++;
-		items.removeChild(items.childNodes[index]);
+		items.removeChild(items.children[index]);
 	};
 	
 	*/
 }
 window.addEventListener("load", function(e)
 {
-	var textBoxes = document.getElementsByClassName("TextBox");
+	// retrofit SELECT elements
+	var selects = document.getElementsByTagName("SELECT");
+	for (var i = 0; i < selects.length; i++)
+	{
+		if (System.ClassList.Contains(selects[i], "uwt-system-control"))
+			continue;
+			
+		var pn = selects[i].parentNode;
+		
+		var divTextBox = document.createElement("div");
+		
+		var textBoxWrapper = document.createElement("div");
+		var dummy = document.createElement("div");
+		textBoxWrapper.appendChild(dummy);
+		
+		var textBox = document.createElement("input");
+		textBox.type = "text";
+		textBoxWrapper.appendChild(textBox);
+		divTextBox.appendChild(textBoxWrapper);
+		
+		var popupElement = document.createElement("div");
+		popupElement.className = "uwt-popup";
+		
+		textBox._popupElement = popupElement;
+		textBox.addEventListener("focus", function()
+		{
+			System.ClassList.Add(this._popupElement, "uwt-visible");
+		});
+		textBox.addEventListener("blur", function()
+		{
+			System.ClassList.Remove(this._popupElement, "uwt-visible");
+		});
+		
+		var menuElement = document.createElement("ul");
+		menuElement.className = "uwt-menu";
+		
+		var select2 = document.createElement("select");
+		for (var j = 0; j < selects[i].options.length; j++)
+		{
+			var li = document.createElement("li");
+			li.className = "uwt-visible";
+			
+			if (selects[i].options[j].value == null)
+			{
+				li.setAttribute("data-value", selects[i].options[j].label)
+			}
+			else
+			{
+				li.setAttribute("data-value", selects[i].options[j].value)
+			}
+			
+			var a = document.createElement("a");
+			
+			var spanIcon = document.createElement("span");
+			spanIcon.className = "uwt-menuitem-icon";
+			a.appendChild(spanIcon);
+			
+			var spanText = document.createElement("span");
+			spanText.className = "uwt-menuitem-text";
+			spanText.innerHTML = selects[i].options[j].label;
+			a.appendChild(spanText);
+			a.href = "#";
+			li.appendChild(a);
+			
+			menuElement.appendChild(li);
+			select2.options.add(selects[i].options[j]);
+			j--;
+		}
+		
+		popupElement.appendChild(menuElement);
+		
+		divTextBox.appendChild(popupElement);
+		
+		divTextBox.className = "uwt-textbox uwt-selection-required";
+		selects[i].replaceWith(divTextBox);
+		divTextBox.appendChild(select2);
+	}
+	
+	var textBoxes = document.getElementsByTagName("input");
 	for (var i = 0; i < textBoxes.length; i++)
 	{
+		if (textBoxes[i].type == "submit" || textBoxes[i].type == "button")
+		{
+			// these are not text boxes; they're buttons
+			continue;
+		}
+		
 		textBoxes[i].NativeObject = new TextBox(textBoxes[i]);
-		if (textBoxes[i].id != "") eval("window." + textBoxes[i].id + " = document.getElementById('" + textBoxes[i].id + "').NativeObject;");
 	}
 });

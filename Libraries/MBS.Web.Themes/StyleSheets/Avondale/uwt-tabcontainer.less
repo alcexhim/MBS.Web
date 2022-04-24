@@ -1,0 +1,35 @@
+div.TabContainer
+{
+	&> ul.Tabs
+	{
+		background-color: #C1CCD1;
+		&> li
+		{
+			&> a
+			{
+				color: #6E7179;
+				font-size: 12px;
+				padding: 10px 16px;
+				
+				&:hover
+				{
+					background-color: #FAFAFA;
+					color: #333333;
+				}
+			}
+			&.Selected > a
+			{
+				background-color: #FFFFFF;
+				color: #242A30;
+			}
+		}
+	}
+	&> div.TabPages
+	{
+		background-color: #FFFFFF;
+		&> div.TabPage
+		{
+			padding: 16px;
+		}
+	}
+}

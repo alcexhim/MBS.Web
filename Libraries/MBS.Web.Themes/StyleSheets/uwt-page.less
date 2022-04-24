@@ -1,18 +1,36 @@
 ﻿body
 {
 	margin: 0px;
-	&:not(.uwt-hide-sidebar)
+}
+
+@media (min-width: 1000px)
+{
+	body
 	{
-		&> div.uwt-page, &> form > div.uwt-page
+		&:not(.uwt-hide-sidebar)
 		{
-			margin-left: 260px;
+			&> div.uwt-page, &> form > div.uwt-page
+			{
+				margin-left: 260px;
+			}
 		}
 	}
+}
+body 
+{
 	&:not(.uwt-hide-header)
 	{
 		&> div.uwt-page, &> form > div.uwt-page
 		{
-			margin-top: 60px;
+			/* margin-top: 60px; */
+		}
+	}
+	&.uwt-hide-sidebar
+	{
+		margin-left: 0px;
+		&> div.uwt-sidebar, &> form > div.uwt-sidebar
+		{
+			display: none;
 		}
 	}
 }
@@ -22,9 +40,13 @@ body, body > form
 	{
 		margin-right: 0px;
 		margin-bottom: 0px;
-		&> div.uwt-header
+		&> div.uwt-header, &> div.uwt-footer
 		{
 			padding: 32px;
+		}
+		&> div.uwt-header
+		{
+			position: relative;
 			&> div.uwt-title
 			{
 				font-size: 18pt;
@@ -37,6 +59,30 @@ body, body > form
 				font-weight: 300;
 				margin-top: 16px;
 				color: rgba(0,0,0,0.6);
+			}
+			&> div.uwt-controlbox
+			{
+				position: absolute;
+				top: 48px;
+				right: 32px;
+				&> ul
+				{
+					list-style-type: none;
+					margin: 0px;
+					padding: 0px;
+					&> li
+					{
+						&> a > i
+						{
+							font-size: 18pt;
+						}
+						display: inline-block;
+						&+ li
+						{
+							margin-left: 16px;
+						}
+					}
+				}
 			}
 		}
 		&> div.uwt-content
@@ -54,5 +100,23 @@ body, body > form
 		border-top: 1px solid #d2d3d6;
 		background-color: #edeef0;
 		padding: 16px;
+	}
+}
+body:not(.uwt-loading) div#uwt-page-loading
+{
+	display: none;
+}
+@media (max-width: 999px)
+{
+	body
+	{
+		&> div.uwt-page, &> form > div.uwt-page
+		{
+			margin-left: 0px;
+		}
+		&> form > div.uwt-sidebar, body > div.uwt-sidebar
+		{
+			display: none;
+		}
 	}
 }

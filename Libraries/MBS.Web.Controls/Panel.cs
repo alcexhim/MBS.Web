@@ -16,14 +16,14 @@ namespace MBS.Web.Controls
 		{
 			if (HeaderControls.Controls.Count > 0 || !String.IsNullOrEmpty(Title))
 			{
-				HeaderControls.AddCssClass("uwt-panel-header");
+				HeaderControls.AddCssClass("uwt-header");
 				Controls.Add(HeaderControls);
 			}
 
-			ContentControls.AddCssClass("uwt-panel-content");
+			ContentControls.AddCssClass("uwt-content");
 			Controls.Add(ContentControls);
 
-			FooterControls.AddCssClass("uwt-panel-footer");
+			FooterControls.AddCssClass("uwt-footer");
 			Controls.Add(FooterControls);
 
 			this.AddCssClass("uwt-panel");

@@ -1,0 +1,47 @@
+﻿div.uwt-wunderbar
+{
+	&> div.uwt-content
+	{
+		background-color: #ffffff;
+	}
+	&> div.uwt-wunderbar-buttons
+	{
+		&> div.uwt-wunderbar-gripper
+		{
+			border: solid 1px #6593cf;
+			.linear-gradient-twostop(#ffffff, #b6d6ff);
+		}
+		&> div.uwt-wunderbar-overflow
+		{
+			.linear-gradient-fourstop(#e2efff, #c5deff, #aed3ff, #bddbff);
+			border-top: solid 1px #6592cf;
+		}
+		&> ul
+		{
+			&> li
+			{
+				&> a
+				{
+					border: solid 1px #6592cf;
+					.linear-gradient-fourstop(#e2efff, #c5deff, #aed3ff, #bddbff);
+					
+					color: #204d89;
+					font-weight: bold;
+					
+					&:hover
+					{
+						.linear-gradient-fourstop(#fffee4, #ffe8a7, #ffd767, #ffe69e);
+					}
+				}
+				&.uwt-selected > a
+				{
+					.linear-gradient-fourstop(#ffd9aa, #ffbb6e, #ffab3f, #fee17a);
+					&:hover
+					{
+						.linear-gradient-fourstop(#ffbd69, #ffac42, #fb8c3c, #fed364);
+					}
+				}
+			}
+		}
+	}
+}

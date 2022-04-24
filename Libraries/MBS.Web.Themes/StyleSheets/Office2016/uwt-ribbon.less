@@ -1,0 +1,158 @@
+﻿div.uwt-ribbon
+{
+	background-color: rgb(243, 242, 241);
+	&> div.uwt-ribbon-application-button
+	{
+		background-color: @ThemeColor;
+		color: #ffffff;
+		font-weight: bold;
+		
+		&> a
+		{
+			&::before
+			{
+				content: "File";
+			}
+			
+			&:hover
+			{
+				background-color: rgba(0, 0, 0, 0.2);
+			}
+		}
+	}
+	&> ul.uwt-ribbon-tab-buttons
+	{
+		&> li
+		{
+			border: none;
+			border-bottom: solid 3px transparent;
+			
+			&:hover
+			{
+				background: rgb(237, 235, 233);
+				border-bottom-color: transparent;
+				
+				color: rgb(37, 36, 35);
+				font-weight: 600;
+			}
+			
+			&.uwt-selected
+			{
+				border-bottom-color: @ThemeColor;
+				font-weight: bold;
+			}
+		}
+	}
+	&> div.uwt-ribbon-tab-contents
+	{
+		&> div
+		{
+			background-color: rgb(243, 242, 241);
+			&> div.uwt-ribbon-tab-group
+			{
+				&> div.uwt-content
+				{
+					.uwt-ribbon-command
+					{
+						div.uwt-title
+						{
+							color: @ControlText;
+						}
+						&.uwt-button, &.uwt-splitbutton
+						{
+							border: solid 1px transparent;
+							&.uwt-selected
+							{
+								border-color: #8e8165;
+								border-radius: 3px;
+							}
+						}
+						&.uwt-button
+						{
+							&:hover
+							{
+								background-color: @ButtonPrelightBackground;
+								border-color: @ButtonPrelightBackground;
+							}
+							&:active, &.uwt-selected
+							{
+								background-color: #c5c5c5;
+								border-color: #969696;
+							}
+						}
+						&.uwt-splitbutton
+						{
+							&> div.uwt-button
+							{
+								border-bottom: solid 1px transparent;
+							}
+							&> div.uwt-dropdown-button
+							{
+								border-top: solid 1px transparent;
+							}
+							&:hover
+							{
+								&> div.uwt-button
+								{
+									border-color: rgb(237, 235, 233);
+									&:hover
+									{
+										background-color: @ButtonPrelightBackground;
+										border-color: @ButtonPrelightBackground;
+									}
+								}
+								&> div.uwt-dropdown-button
+								{
+									border-color: rgb(237, 235, 233);
+									&:hover
+									{
+										background-color: @ButtonPrelightBackground;
+										border-color: @ButtonPrelightBackground;
+									}
+								}
+							}
+							&> div.uwt-button
+							{
+								&:hover
+								{
+									background-color: @ButtonPrelightBackground;
+									border-color: @ButtonPrelightBackground;
+								}
+							}
+							&.uwt-selected
+							{
+								&> div.uwt-button
+								{
+									.linear-gradient-fourstop(#fed6a9, #fbb263, #fa9b32, #f9a949);
+									border-bottom: solid 1px #fce9a1;
+								}
+								&> div.uwt-dropdown-button
+								{
+									.linear-gradient-twostop(#fbbd5e, #fce9a1);
+									border-top: solid 1px #fff1d8;
+								}
+							}
+						}
+						&.uwt-combobox
+						{
+							border: solid 1px #abc1de;
+							background-color: #eaf2fb;
+						}
+					}
+				}
+				&> div.uwt-title
+				{
+					font-size: 9pt;
+					color: #666;
+				}
+			}
+		}
+	}
+}
+body:not(.uwt-ribbon-visible)
+{
+	&> div.uwt-ribbon, &> form > div.uwt-ribbon
+	{
+		display: none;
+	}
+}

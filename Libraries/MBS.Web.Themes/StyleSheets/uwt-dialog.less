@@ -1,0 +1,90 @@
+﻿div.uwt-dialog-background
+{
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	
+	background-color: rgba(0, 0, 0, 0.8);
+	
+	transition: all 0.3s;
+	&:not(.uwt-visible)
+	{
+		opacity: 0;
+		visibility: hidden;
+	}
+	z-index: 10000;
+}
+div.uwt-dialog
+{
+	max-width: 35rem;
+	margin: 1.75rem auto;
+	z-index: 10001;
+	position: relative;
+	top: 0px;
+	
+	transition: all 0.3s;
+	&:not(.uwt-visible)
+	{
+		opacity: 0;
+		visibility: hidden;
+	}
+	
+	&> div.uwt-header
+	{
+		padding: 1.25rem 1.5625rem;
+		
+		&> div.uwt-dialog-title, &> div.uwt-dialog-controlbox
+		{
+		}
+		&> div.uwt-dialog-title
+		{
+			font-size: 1rem;
+		}
+		&> div.uwt-dialog-controlbox
+		{
+			position: absolute;
+			right: 24px;
+			top: 15px;
+			&> a.uwt-dialog-controlbox-close
+			{
+				font-size: 1.341rem;
+				font-weight: 300;
+			}
+		}
+	}
+	&> div.uwt-content
+	{
+		padding: 1.5625rem;
+	}
+	&> div.uwt-footer
+	{
+		display: flex;
+		justify-content: flex-end;
+		
+		padding: 1.25rem 1.5625rem;
+		
+		&> :not(:first-child)
+		{
+			margin-left: .25rem;
+		}
+		&> :not(:last-child)
+		{
+			margin-right: .25rem;
+		}
+	}
+}
+@media (max-width: 600px)
+{
+	div.uwt-dialog
+	{
+		position: fixed;
+		top: 0px;
+		right: 0px;
+		left: 0px;
+		bottom: 0px;
+		margin: 0px;
+		max-width: none;
+	}
+}

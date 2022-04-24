@@ -1,0 +1,50 @@
+﻿div.uwt-toolbar
+{
+	.linear-gradient-fourstop(#ced5e7, #b5cff7, #a5bfe7, #cfe3ff);
+	
+	border: solid 1px #6293cf;
+	border-left: none;
+	border-right: none;
+	
+	&> a.uwt-button
+	{
+		border: solid 1px transparent;
+		background: none;
+		
+		color: #0f408d;
+		padding: 4px 8px;
+		
+		&:hover
+		{
+			border: solid 1px #ffbd69;
+			.linear-gradient-twostop(#fff5cc, #ffdb75);
+		}
+		
+		&> span.uwt-title
+		{
+			vertical-align: middle;
+		}
+		&> span.uwt-icon
+		{
+			&> img
+			{
+				padding-right: 6px;
+				margin-top: -2px;
+				vertical-align: middle;
+			}
+		}
+	}
+	&> span.uwt-separator
+	{
+		border-left: solid 1px #6992cf;
+		border-right: solid 1px #fafbfd;
+	}
+}
+
+body:not(.uwt-toolbar-visible)
+{
+	&> div.uwt-toolbar, &> form > div.uwt-toolbar
+	{
+		display: none;
+	}
+}

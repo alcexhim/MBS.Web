@@ -32,7 +32,7 @@ namespace MBS.Web.Controls
 			this.Controls.Add(btn);
 
 			System.Web.UI.WebControls.Panel pnlContent = new System.Web.UI.WebControls.Panel();
-			pnlContent.AddCssClass("apb-preview");
+			pnlContent.AddCssClass("apb-preview uwt-popup");
 
 			System.Web.UI.WebControls.Panel pnlMenuItems = new System.Web.UI.WebControls.Panel();
 			pnlMenuItems.AddCssClass("apb-actions");

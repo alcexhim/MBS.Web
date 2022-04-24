@@ -1,0 +1,47 @@
+blockquote
+{
+	border-left: solid 5px rgba(0, 0, 0, 0.08);
+	font-size: 17.5px;
+	margin: 0px 0px 20px;
+	padding: 20px;
+	&> p
+	{
+		margin: 0px 0px 10px;
+	}
+	&> small
+	{
+		color: rgba(0, 0, 0, 0.5);
+		display: block;
+		font-size: 80%;
+		line-height: 1.42857;
+		&::before
+		{
+			content: "— ";
+		}
+	}
+	
+	&.Success
+	{
+		background-color: #B0EBCA;
+		border-color: #4A8564;
+		color: #3C763D;
+	}
+	&.Information
+	{
+		background-color: #BEE2EF;
+		border-color: #587C89;
+		color: #31708F;
+	}
+	&.Warning
+	{
+		background-color: #FFF2E3;
+		border-color: #9D9080;
+		color: #8A6D3B;
+	}
+	&.Danger
+	{
+		background-color: #FBD1D1;
+		border-color: #986E6E;
+		color: #A94442;
+	}
+}

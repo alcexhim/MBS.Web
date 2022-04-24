@@ -1,0 +1,54 @@
+﻿span.uwt-radiobutton
+{
+	&> input[type=radio]
+	{
+		display: none;
+	}
+	&> span.uwt-label, &> label
+	{
+		&::before
+		{
+			background-size: .5rem;
+			background-repeat: no-repeat;
+			background-position: center center;
+			left: 0;
+			
+			border-radius: 50%;
+			content: "";
+			display: inline-block;
+			width: 1.125rem;
+			height: 1.125rem;
+			
+			background-color: #fff;
+			border: rgba(24,28,33,0.1) solid 1px;
+			margin-right: 8px;
+			position: relative;
+			top: 4px;
+			
+			transition: all .2s;
+		}
+	}
+	&> input:checked
+	{
+		&~ span.uwt-label, &~label
+		{
+			&::before
+			{
+				background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='%23fff'/%3E%3C/svg%3E");
+				border-color: #26B4FF;
+				background-color: #26B4FF;
+			}
+		}
+	}
+	&> input:focus
+	{
+		&~ span.uwt-label, &~ label
+		{
+			&::before
+			{
+				box-shadow: 0 0 0 2px rgba(38,180,255,0.4);
+				border-color: #26B4FF;
+			}
+		}
+	}
+}

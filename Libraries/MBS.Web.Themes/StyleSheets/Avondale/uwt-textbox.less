@@ -1,0 +1,28 @@
+input[type=text], input[type=password], textarea
+{
+	border: solid 1px #CCD0D4;
+	border-radius: 3px;
+	box-shadow: none;
+	
+	font: inherit;
+	font-size: 12px;
+	
+	line-height: 1.42857;
+	padding: 6px 12px;
+	transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+	&:hover, &:focus
+	{
+		border-color: @ThemeColor;
+	}
+	&:focus
+	{
+		box-shadow: 0px 0px 4px #00ACAC;
+	}
+	&::placeholder
+	{
+		color: #6c757d;
+		opacity: 1;
+	}
+	
+	.UwtColors();
+}

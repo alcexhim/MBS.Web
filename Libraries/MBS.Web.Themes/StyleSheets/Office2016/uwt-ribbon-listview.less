@@ -1,0 +1,42 @@
+﻿div.uwt-ribbon-listview
+{
+	background-color: #ffffff;
+	border-color: #abafb2;
+	&> div.uwt-scrollbar
+	{
+		border: solid 1px #c5c5c5;
+		margin: -1px;
+		&> a
+		{
+			border: solid 1px #c5c5c5;
+			
+			&:hover
+			{
+				background-color: #c5c5c5;
+				border-color: #969696;
+			}
+			&.uwt-disabled
+			{
+				background-color: #e6e6e6;
+				border-color: #c5c5c5;
+			}
+		}
+	}
+	&> div.uwt-content
+	{
+		&> div.uwt-listview-item
+		{
+			border: solid 4px transparent;
+			
+			&:hover, &.uwt-selected
+			{
+				background-color: transparent;
+				border-color: #c5c5c5;
+			}
+			&:active
+			{
+				border-color: #aeaeae;
+			}
+		}
+	}
+}

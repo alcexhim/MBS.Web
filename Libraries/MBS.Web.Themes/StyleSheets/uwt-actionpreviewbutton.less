@@ -1,0 +1,52 @@
+﻿div.uwt-actionpreviewbutton
+{
+	display: inline-block;
+	position: relative;
+	
+	&> a.apb-button
+	{
+		opacity: 0;
+		visibility: hidden;
+		
+		display: inline-block;
+		padding: 0px 2px 0px 6px;
+		border-radius: 4px;
+		
+		margin-left: 8px;
+		padding-right: 6px;
+		
+		&::before
+		{
+			content: "...";
+			font-family: inherit;
+			font-weight: bold;
+		}
+	}
+	&:hover
+	{
+		&> a.apb-button
+		{
+			opacity: 1;
+			visibility: visible;
+			&:hover
+			{
+				text-decoration: none;
+			}
+		}
+	}
+	&.uwt-visible > div.apb-preview
+	{
+		visibility: visible;
+		opacity: 1;
+	}
+	&> div.apb-preview
+	{
+		visibility: hidden;
+		opacity: 0;
+		
+		float: right;
+		padding: 8px;
+		margin-left: 8px;
+		position: absolute;
+	}
+}

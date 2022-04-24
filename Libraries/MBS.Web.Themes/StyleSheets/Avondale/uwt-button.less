@@ -1,0 +1,105 @@
+input[type=submit], input[type=reset], input[type=button], a.uwt-button, button
+{
+	
+	.ButtonColor(@backcolor, @forecolor)
+	{
+		background-color: @backcolor;
+		border-color: @backcolor;
+		color: @forecolor;
+		&:hover
+		{
+			background-color: darken(@backcolor, 10%);
+			color: @forecolor;
+		}
+	}
+	
+	&.Large
+	{
+		font-size: 18px;
+		line-height: 1.33;
+		padding: 10px 16px;
+	}
+
+	cursor: pointer;	
+	border: solid 1px transparent;
+	border-radius: 3px;
+	line-height: 1.42857;
+	font-size: 14px;
+	font-weight: 600;
+	padding: 6px 12px;
+	text-align: center;
+	text-decoration: none;
+	vertical-align: middle;
+	white-space: nowrap;
+	
+	transition: all 0.3s;
+	
+	.ButtonColor(#f1f3f4, #2d353c);
+	
+	&:hover
+	{
+		text-decoration: none;
+	}
+	
+	&+ input[type=submit], &+ input[type=reset], &+ input[type=button], &+ a.pwt-Button, &+ button
+	{
+		margin-left: 5px;
+	}
+	
+	&.uwt-color-gray
+	{
+		.ButtonColor(#b6c2c9, #fff);
+	}
+	&.uwt-color-purple
+	{
+		.ButtonColor(#727cb6, #fff);
+	}
+	&.uwt-color-indigo
+	{
+		.ButtonColor(#8753de, #fff);
+	}
+	&.uwt-color-primary
+	{
+		.ButtonColor(#348fe2, #fff);
+	}
+	&.uwt-color-info
+	{
+		.ButtonColor(#49b6d6, #fff);
+	}
+	&.uwt-color-yellow
+	{
+		.ButtonColor(#ffd900, #2d353c);
+	}
+	&.uwt-color-warning
+	{
+		.ButtonColor(#f59c1a, #fff);
+	}
+	&.uwt-color-pink
+	{
+		.ButtonColor(#fb5597, #fff);
+	}
+	&.uwt-color-danger
+	{
+		.ButtonColor(#ff5b57, #fff);
+	}
+	&.uwt-color-success
+	{
+		.ButtonColor(#00acac, #fff);
+	}
+	&.uwt-color-green
+	{
+		.ButtonColor(#32a932, #fff);
+	}
+	&.uwt-color-lime
+	{
+		.ButtonColor(#90ca4b, #fff);
+	}
+	&.uwt-color-inverse
+	{
+		.ButtonColor(#2d353c, #fff);
+	}
+	&.uwt-color-none
+	{
+		.ButtonColor(transparent, inherit);
+	}
+}

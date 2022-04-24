@@ -1,0 +1,40 @@
+﻿div.uwt-button-group
+{
+	&> div.uwt-button
+	{
+		cursor: default;
+		
+		&> a
+		{
+			display: block;
+			padding: 16px;
+			&> span
+			{
+				display: block;
+				&.uwt-title
+				{
+					padding-bottom: 8px;
+				}
+			}
+		}
+	}
+	
+	&.uwt-orientation-horizontal
+	{
+		&> div.uwt-button
+		{
+			display: inline-block;
+			margin-right: 16px;
+		}
+	}
+	&.uwt-orientation-vertical
+	{
+		&> div.uwt-button
+		{
+			&> a
+			{
+				text-align: left;
+			}
+		}
+	}
+}

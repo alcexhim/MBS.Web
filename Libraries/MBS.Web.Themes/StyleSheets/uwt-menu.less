@@ -1,0 +1,33 @@
+﻿ul.uwt-menu
+{
+	list-style-type: none;
+	padding-left: 0px;
+	margin: 0px;
+	&> li
+	{
+		&:not(.uwt-visible)
+		{
+			display: none;
+		}
+		&> a
+		{
+			display: block;
+			padding: .438rem 1.25rem;
+			
+			text-decoration: none;
+		}
+		&.uwt-separator
+		{
+			border-bottom: solid 1px #eee;
+			margin-left: 8px;
+			margin-right: 8px;
+			margin-top: 4px;
+			margin-bottom: 4px;
+		}
+	}
+}
+
+div.uwt-popup.uwt-contextmenu
+{
+	position: fixed;
+}

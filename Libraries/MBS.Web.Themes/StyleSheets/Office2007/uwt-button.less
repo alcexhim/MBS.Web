@@ -1,0 +1,27 @@
+﻿(~'@{ButtonSelector}')
+{
+	border: solid 1px #799db6;
+	border-radius: 3px;
+	.linear-gradient-fourstop(#f5f9fb, #add3e6, #91c0d9, #d5ecf7);
+	
+	&:hover
+	{
+		border-color: #dbce99;
+		.linear-gradient-fourstop(#fffeed, #ffebb7, #ffd63b, #ffe8a6);
+	}
+	&:focus
+	{
+		border-color: #799db6;
+		.linear-gradient-fourstop(#dcfcff, #7ec4ed, #5fafde, #b1fcff);
+	}
+	&:focus-visible
+	{
+		outline: none;
+	}
+	&:active
+	{
+		border-color: #af8660;
+		border-bottom-color: #ffb206;
+		.linear-gradient-fourstop(#ffbe7b, #feae47, #ff9708, #ffc444);
+	}
+}

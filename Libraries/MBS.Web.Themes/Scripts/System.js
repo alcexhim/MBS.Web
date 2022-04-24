@@ -290,8 +290,15 @@ System.Redirect = function(path)
  */
 System.ExpandRelativePath = function(path)
 {
+	if (System.BasePath === undefined)
+	{
+		var wlIndexOfP = window.location.href.indexOf("/", window.location.href.indexOf("/") + 2);
+		var wlBasePath = window.location.href.substring(0, wlIndexOfP);
+		System.BasePath = wlBasePath;
+	}
+	
 	var replpath = System.BasePath;
-	if (System.IsTenantedHostingEnabled())
+	if (System.IsTenanted)
 	{
 		replpath = replpath + "/" + System.GetTenantName();
 	}
@@ -337,6 +344,10 @@ System.EventHandler = function()
 	this.Add = function (func)
 	{
 		this._functions.push(func);
+	};
+	this.Clear = function()
+	{
+		this._functions = new Array();
 	};
 	this.Execute = function(sender, e)
 	{
@@ -591,14 +602,21 @@ System.ClassList =
 			object.classList.add(className);
 			return true;
 		}
-
-		var splits = object.className.split(" ");
-		for (var i = 0; i < splits.length; i++)
+		else if (object.className !== undefined)
 		{
-			if (splits[i] == className) return true;
+			var splits = object.className.split(" ");
+			for (var i = 0; i < splits.length; i++)
+			{
+				if (splits[i] == className) return true;
+			}
+			splits.push(className);
+			object.className = splits.join(" ");
 		}
-		splits.push(className);
-		object.className = splits.join(" ");
+		else
+		{
+			console.log("System.ClassList.Add failed: the following object does not define classList or className");
+			console.log(object);
+		}
 		return false;
 	},
 	"Remove": function (object, className)
@@ -623,7 +641,20 @@ System.ClassList =
 	{
 		if (object.classList && object.classList.contains)
 		{
-			return object.classList.contains(className);
+			if (typeof(className) === "string")
+			{
+				return object.classList.contains(className);
+			}
+			else
+			{
+				// implement ContainsAny(array).
+				for (var i = 0; i < className.length; i++)
+				{
+					if (object.classList.contains(className[i]))
+						return true;
+				}
+				return false;
+			}
 		}
 
 		if (!object.className) return false;
@@ -631,7 +662,20 @@ System.ClassList =
 		var splits = object.className.split(" ");
 		for (var i = 0; i < splits.length; i++)
 		{
-			if (splits[i] == className) return true;
+			if (typeof(className) === "string")
+			{
+				if (splits[i] == className) return true;
+			}
+			else
+			{
+				// implement ContainsAny(array).
+				for (var j = 0; j < className.length; j++)
+				{
+					if (splits[i] == className[j])
+						return true;
+				}
+				return false;
+			}
 		}
 		return false;
 	},
@@ -648,6 +692,21 @@ System.ClassList =
 	}
 };
 
+System.Screen =
+{
+	"Size":
+	{
+		"GetHeight": function()
+		{
+			return document.documentElement.clientHeight;
+		},
+		"GetWidth": function()
+		{
+			return document.documentElement.clientWidth;
+		}
+	}
+};
+
 System.StringMethods =
 {
 	"Contains": function(string, value)
@@ -659,6 +718,15 @@ System.StringMethods =
 		return false;
 	}
 };
+
+System.AddEventListener(window, "load", function()
+{
+	// automatically remove the spinner when the document has finished loading
+	window.setTimeout(function()
+	{
+		System.ClassList.Remove(document.body, "uwt-loading");
+	}, 1000);
+});
 
 var WebPage =
 {

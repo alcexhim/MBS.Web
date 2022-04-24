@@ -1,0 +1,184 @@
+body
+{
+	&> div.uwt-header, &> form > div.uwt-header
+	{
+		background-color: #fff;
+		
+		&> div.uwt-header-item
+		{
+			&> input
+			{
+				background-color: #f2f3f4;
+				border-color: #f2f3f4;
+				color: #2d353c;
+				
+				&::placeholder
+				{
+					color: rgba(255,255,255,.5);
+				}
+			}
+			
+			&.uwt-searchbar
+			{
+				&::before
+				{
+					content: "\f002";
+					display: inline-block;
+					
+					font-family: "FontAwesome";
+					font-size: 0.75rem;
+					font-weight: 900;
+					
+					position: relative;
+					margin-left: -16px;
+					left: 28px;
+					top: 0;
+				}
+				&> input
+				{
+					border-radius: 30px;
+					border: 1px solid #d5dbe0;
+					
+					width: 220px;
+					transition: width 0.2s;
+					
+					padding-left: 32px;
+					
+					&:focus
+					{
+						border-color: #f2f3f4;
+						width: 300px;
+						
+						/* Remove the focus indicator on mouse-focus for browsers
+						that do support :focus-visible */
+						outline: none;
+					}
+				}
+				
+				div.uwt-textbox-popup
+				{
+					&> div.uwt-dropdown-content > ul.uwt-menu > li > a
+					{
+						&> span
+						{
+							display: block;
+							padding-top: 4px;
+							padding-bottom: 4px;
+						}
+						&> span.uwt-title
+						{
+							font-weight: bold;
+						}
+						&> span.uwt-subtitle, &> span.uwt-content
+						{
+							font-size: small;
+						}
+					}
+					
+					background-color: #fff;
+				}
+			}
+		}
+		
+		margin-bottom: 20px;
+		height: @HeaderHeight;
+		
+		&> div.uwt-logo
+		{
+			color: #FFFFFF;
+			
+			font-size: 24px;
+			padding: (@HeaderHeight / 4);
+			
+			width: 128px;
+			
+			a
+			{
+				text-decoration: none;
+				color: inherit;
+			}
+			
+			span.Primary
+			{
+				color: @ThemeColor;
+			}
+		}
+		
+		&> ul.uwt-menu
+		{
+			position: absolute;
+			right: 24px;
+			
+			&> li
+			{
+				&> a
+				{
+					text-transform: uppercase;
+					font-size: 12px;
+					font-weight: 600;
+					line-height: 20px;
+					padding: 26px 16px;
+				}
+				&.uwt-selected
+				{
+					&> a
+					{
+						background-color: #00ACAC;
+						color: #ffffff;
+					}
+					&::after
+					{
+						border-bottom: 16px solid @PageBackgroundColor;
+						border-left: 16px solid rgba(0, 0, 0, 0);
+						border-radius: 0;
+						border-right: 16px solid rgba(0, 0, 0, 0);
+						content: "";
+						display: block;
+						height: 0px;
+						margin-left: auto;
+						margin-right: auto;
+						position: relative;
+						top: -16px;
+						width: 0px;
+					}
+				}
+			}
+		}
+	}
+}
+body.uwt-header-inverse
+{
+	&> div.uwt-header, &> form > div.uwt-header
+	{
+		background-color: #1a2229;
+		
+		&> div.uwt-header-item
+		{
+			&::before
+			{
+				color: #fff;
+			}
+			&.uwt-searchbar
+			{
+				&> input
+				{
+					border-color: transparent;
+				}
+				div.uwt-textbox-popup
+				{
+					background-color: #1a2229;
+				}
+			}
+			&> input
+			{
+				background-color: rgba(255,255,255,.25);
+				color: #fff;
+				
+				&::placeholder
+				{
+					color: rgba(255,255,255,.5);
+				}
+			}
+		}
+	}
+}

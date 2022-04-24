@@ -1,0 +1,32 @@
+﻿div.uwt-checkbox
+{
+	transition: all 0.3s;
+	&> i.fa-check
+	{
+		margin-left: 4px;
+		transition: all 0.3s;
+	}
+	&:not(.uwt-checked)
+	{
+		&> i.fa-check
+		{
+			opacity: 0;
+		}
+	}
+	
+	border: solid 1px #24abf2;
+	display: inline-block;
+	width: 22px;
+	height: 22px;
+	border-radius: 4px;
+	color: #ffffff;
+	&:focus-within
+	{
+		box-shadow: 0px 0px 4px #24abf2;
+	}
+	&.uwt-checked
+	{
+		background-color: #24abf2;
+		color: #ffffff;
+	}
+}

@@ -1,0 +1,115 @@
+body > div.uwt-sidebar, body > form > div.uwt-sidebar
+{
+	background: #2D353C;
+	
+	div.UserInfo
+	{
+		background-color: #1A2229;
+		padding: 20px;
+		
+		&> div.Icon
+		{
+			display: table-cell;
+			width: 56px;
+		}
+		&> div.Text
+		{
+			display: table-cell;
+			font-size: 14px;
+			
+			&> span.UserName, span.StatusText
+			{
+				display: block;
+			}
+			&> span.UserName
+			{
+				color: #FFFFFF;
+			}
+			&> span.StatusText
+			{
+				color: #889097;
+				font-size: 85%;
+			}
+		}
+	}
+	
+	ul.uwt-menu > li
+	{
+		&.uwt-section > a
+		{
+			color: #707478;
+			font-size: 85%;
+			letter-spacing: 2px;
+			text-transform: uppercase;
+			padding-top: 16px;
+			padding-bottom: 16px;
+		}
+		&> a
+		{
+			display: block;
+			line-height: 20px;
+			text-decoration: none;
+			&> i.fa
+			{
+				float: left;
+				font-size: 14px;
+				line-height: 20px;
+				margin-right: 16px;
+				text-align: center;
+				width: 14px;
+			}
+		}
+		&> ul.uwt-menu
+		{
+			background-color: #1A2229;
+			height: 0px;
+			transition: height linear 0.3s;
+			overflow: hidden;
+			padding: 0px;
+			&> li
+			{
+				&> a
+				{
+					color: #889097;
+					font-weight: 300;
+					padding: 5px 20px;
+					&:hover
+					{
+						color: #FFFFFF;
+						text-decoration: none;
+					}
+				}
+			}
+		}
+		&.uwt-opened > ul.uwt-menu
+		{
+			height: auto;
+			padding: 10px 0px 10px 30px;
+		}
+	}
+	
+	/* first child styles only */
+	&> ul.uwt-menu > li
+	{
+		&.uwt-opened > a, > a:hover
+		{
+			background-color: #232A2F;
+			text-decoration: none;
+		}
+		&> a
+		{
+			padding: 8px 20px;
+			
+			color: #A8ACB1;
+		}
+		&.uwt-selected > a
+		{
+			background-color: @ThemeColor;
+			color: #FFFFFF
+		}
+	}
+	&> ul.uwt-menu > li.uwt-section > a
+	{
+		background-color: transparent;
+	}
+}

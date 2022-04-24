@@ -1,0 +1,130 @@
+@ThumbSize: 30px;
+@TrackSize: 8px;
+@ThumbOffset: ((@ThumbSize - @TrackSize) / 2);
+
+div.uwt-trackbar
+{
+	margin-bottom: 10px;
+	padding: 16px 30px;
+	
+	&> div.uwt-trackbar-track
+	{
+		background-color: #A9ACB1;
+		border-radius: 16px;
+		
+		&> div.uwt-trackbar-track-quantity
+		{
+			background-color: #017AFD;
+			border-radius: 15px;
+		}
+		&> div.uwt-trackbar-track-thumb
+		{
+			background-color: #FFFFFF;
+			border-radius: 100%;
+			box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4);
+			cursor: move;
+			height: @ThumbSize;
+			width: @ThumbSize;
+		}
+	}
+	
+	&.uwt-orientation-horizontal
+	{
+		&> div.uwt-trackbar-track
+		{
+			height: @TrackSize;
+			&> div.uwt-trackbar-track-uantity
+			{
+				/* transition: width linear 0.1s; */
+			}
+			&> div.uwt-trackbar-track-thumb
+			{
+				top: -@ThumbOffset;
+				/* transition: left linear 0.1s; */
+			}
+		}
+	}
+	&.uwt-orientation-vertical
+	{
+		&> div.uwt-trackbar-track
+		{
+			width: @TrackSize;
+			&> div.uwt-trackbar-track-quantity
+			{
+				/* transition: height linear 0.1s; */
+			}
+			&> div.uwt-trackbar-track-thumb
+			{
+				left: -@ThumbOffset;
+				/* transition: top linear 0.1s; */
+			}
+		}
+	}
+	
+	&> div.uwt-trackbar-track
+	{
+		&> div.uwt-trackbar-track-quantity
+		{
+			background-color: @ThemeColor;
+		}
+		&> div.uwt-trackbar-track-thumb
+		{
+			color: @ThemeColor;
+		}
+	}
+	&.uwt-color-red > div.uwt-trackbar-track
+	{
+		&> div.uwt-trackbar-track-quantity
+		{
+			background-color: @ThemeColorRed;
+		}
+		&> div.uwt-trackbar-track-thumb
+		{
+			color: @ThemeColorRed;
+		}
+	}
+	&.uwt-color-blue > div.uwt-trackbar-track
+	{
+		&> div.uwt-trackbar-track-quantity
+		{
+			background-color: @ThemeColorBlue;
+		}
+		&> div.uwt-trackbar-track-thumb
+		{
+			color: @ThemeColorBlue;
+		}
+	}
+	&.uwt-color-purple > div.uwt-trackbar-track
+	{
+		&> div.uwt-trackbar-track-quantity
+		{
+			background-color: @ThemeColorPurple;
+		}
+		&> div.uwt-trackbar-track-thumb
+		{
+			color: @ThemeColorPurple;
+		}
+	}
+	&.uwt-color-orange > div.uwt-trackbar-track
+	{
+		&> div.uwt-trackbar-track-quantity
+		{
+			background-color: @ThemeColorOrange; 
+		}
+		&> div.uwt-trackbar-track-thumb
+		{
+			color: @ThemeColorOrange; 
+		}
+	}
+	&.uwt-color-black > div.uwt-trackbar-track
+	{
+		&> div.uwt-trackbar-track-quantity
+		{
+			background-color: @ThemeColorBlack; 
+		}
+		&> div.uwt-trackbar-track-thumb
+		{
+			color: @ThemeColorBlack; 
+		}
+	}
+}

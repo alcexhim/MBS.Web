@@ -1,0 +1,49 @@
+﻿div.uwt-tabcontainer
+{
+	&> ul.uwt-tabcontainer-tabs
+	{
+		border: solid 1px #6592cf;
+		background-color: #add1ff;
+		
+		&> li
+		{
+			&> a
+			{
+				border: solid 1px #6592cf;
+				color: #000000;
+				text-decoration: none;
+				
+				margin-left: -1px;
+				margin-right: -1px;
+				margin-top: -1px;
+				
+				.linear-gradient-fourstop(#e2efff, #c5deff, #aed3ff, #bddbff);
+				&:hover
+				{
+					.linear-gradient-fourstop(#fffee4, #ffe8a7, #ffd767, #ffe69e);
+				}
+			}
+			&.uwt-selected > a
+			{
+				.linear-gradient-fourstop(#ffd9aa, #ffbb6e, #ffab3f, #fee17a);
+				&:hover
+				{
+					.linear-gradient-fourstop(#ffbd69, #ffac42, #fb8c3c, #fed364);
+				}
+			}
+			&.uwt-tabcontainer-controlbox
+			{
+				padding-left: 16px;
+			}
+		}
+	}
+	&> div.uwt-tabcontainer-tabpages
+	{
+		&>div.uwt-tabpage
+		{
+			background-color: #e3efff;
+			border: solid 1px #6592cf;
+			border-top: none;
+		}
+	}
+}
