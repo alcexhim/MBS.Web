@@ -12,5 +12,21 @@
 		{
 			display: inline-block;
 		}
+		ul.uwt-menu
+		{
+			padding-bottom: 32px;
+			overflow-y: auto;
+		}
+	}
+}
+
+@media print
+{
+	body, body > form
+	{
+		&> div.uwt-header
+		{
+			display: none;
+		}
 	}
 }

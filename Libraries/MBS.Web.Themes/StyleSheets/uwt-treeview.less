@@ -1,0 +1,31 @@
+﻿ul.uwt-treeview, ul.uwt-treeview ul
+{
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+	padding-left: 32px;
+	
+	li
+	{
+		position: relative;
+		
+		&:not(.uwt-expanded) ul
+		{
+			display: none;
+		}
+		
+		&> span.uwt-treeview-item
+		{
+			&> span.uwt-treeview-toggler
+			{
+				display: inline-block;
+				position: absolute;
+				top: 8px;
+				left: 16px;
+			}
+			display: block;
+			padding: 8px;
+			padding-left: 32px;
+		}
+	}
+}

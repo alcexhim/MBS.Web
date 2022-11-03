@@ -1,0 +1,31 @@
+﻿div.uwt-wunderbar
+{
+	.linear-gradient-twostop(#e9edf1, #dadee3);
+	&> div.uwt-wunderbar-buttons
+	{
+		&> ul
+		{
+			&> li
+			{
+				&> a
+				{
+					border: solid 1px transparent;
+					color: #000000;
+					font-weight: bold;
+					
+					margin: 8px;
+					&:hover
+					{
+						border-color: #a1a9b3;
+						.linear-gradient-fourstop(#f4f6f9, #e1e7ed, #e2e6ec, #eaeef2);
+					}
+				}
+				&.uwt-selected > a
+				{
+					border-color: #a1a9b3;
+					.linear-gradient-fourstop(#dee3ea, #d0d6de, #cfd7de, #e1e7ed);
+				}
+			}
+		}
+	}
+}

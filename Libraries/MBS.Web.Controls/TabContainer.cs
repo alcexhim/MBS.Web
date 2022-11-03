@@ -20,6 +20,8 @@ namespace MBS.Web.Controls
 		public TabPage SelectedPage { get; set; } = null;
 		public TabPage.TabPageCollection TabPages { get; } = new TabPage.TabPageCollection();
 
+		public System.Web.UI.WebControls.Panel HeaderControls { get; } = new System.Web.UI.WebControls.Panel();
+
 		public override void RenderBeginTag(HtmlTextWriter writer)
 		{
 			this.AddCssClass("uwt-tabcontainer");
@@ -43,6 +45,13 @@ namespace MBS.Web.Controls
 				li.Controls.Add(a);
 				ul.Controls.Add(li);
 			}
+
+			System.Web.UI.HtmlControls.HtmlGenericControl liHeaderControls = new System.Web.UI.HtmlControls.HtmlGenericControl("li");
+			liHeaderControls.AddCssClass("uwt-tabcontainer-controlbox");
+			liHeaderControls.AddCssClass("uwt-visible");
+			liHeaderControls.Controls.Add(HeaderControls);
+			ul.Controls.Add(liHeaderControls);
+
 			this.Controls.Add(ul);
 
 			System.Web.UI.HtmlControls.HtmlGenericControl div = new System.Web.UI.HtmlControls.HtmlGenericControl("div");

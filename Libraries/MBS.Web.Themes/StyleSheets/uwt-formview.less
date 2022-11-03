@@ -1,18 +1,107 @@
 ﻿table.uwt-formview
 {
 	border-collapse: collapse;
-	tr td
+	&:not(.uwt-expand)
+	{
+		display: inline-block;
+	}
+	&> tr > td, &> thead > tr > td, &> tbody > tr > td
 	{
 		padding: 8px;
 		padding-left: 0px;
+		vertical-align: top;
 		&:first-child
 		{
 			font-weight: bold;
 			padding-right: 24px;
 		}
 	}
-	&.uwt-formview-stacked tr td
+	&.uwt-formview-stacked
 	{
-		display: block;
+		&> tr, &> td, &> thead > tr, &> thead > tr > td, &> tbody > tr, &> tbody > tr > td
+		{
+			display: block;
+		}
+	}
+	input
+	{
+		width: 100%;
+		box-sizing: border-box;
+	}
+	tr.uwt-required > td:first-child
+	{
+		position: relative;
+		&::before
+		{
+			content: "*";
+			color: #f00;
+			font-size: 18pt;
+			position: absolute;
+			right: 4px;
+		}
+	}
+}
+
+
+/* V2 FormView - now more FLEXible! */
+div.uwt-formview
+{
+	display: table;
+	/*
+	display: flex;
+	flex-direction: column;
+	*/
+	
+	&> div.uwt-formview-item
+	{
+		/*
+		display: flex;
+		align-items: center;
+		align-content: center;
+		*/
+		display: table-row;
+		vertical-align: middle;
+		
+		padding: 16px;
+		&> div.uwt-formview-item-label
+		{
+			display: table-cell;
+			vertical-align: middle;
+			
+			padding-right: 32px;
+			&> label
+			{
+				font-weight: bold;
+			}
+			&> div.uwt-formview-item-description
+			{
+				color: #aaaaaa;
+			}
+		}
+		&> div.uwt-formview-item-content
+		{
+			display: table-cell;
+			vertical-align: middle;
+		}
+	}
+}
+
+@media (max-width: 800px)
+{
+	div.uwt-formview
+	{
+		&> div.uwt-formview-item
+		{
+			/*
+			flex-direction: column;
+			flex-grow: 1;
+			*/
+			display: block;
+			
+			&> div.uwt-formview-item-label
+			{
+				display: block;
+			}
+		}
 	}
 }

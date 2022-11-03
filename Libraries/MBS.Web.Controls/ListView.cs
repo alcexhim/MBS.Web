@@ -10,6 +10,8 @@ namespace MBS.Web.Controls
 		{
 		}
 
+		public System.Web.UI.AttributeCollection Attributes { get; } = new System.Web.UI.AttributeCollection(new System.Web.UI.StateBag());
+
 		public string ColumnID { get; set; } = String.Empty;
 		public string Value { get; set; } = String.Empty;
 
@@ -27,6 +29,7 @@ namespace MBS.Web.Controls
 		{
 		}
 
+		public System.Web.UI.AttributeCollection Attributes { get; } = new AttributeCollection(new StateBag());
 		public ListViewItemColumn.ListViewItemColumnCollection Columns { get; } = new ListViewItemColumn.ListViewItemColumnCollection();
 	}
 	public class ListViewColumn
@@ -36,6 +39,7 @@ namespace MBS.Web.Controls
 		{
 		}
 
+		public System.Web.UI.AttributeCollection Attributes { get; } = new AttributeCollection(new StateBag());
 		public string ID { get; set; } = String.Empty;
 		public string GroupTitle { get; set; } = null;
 		public string Title { get; set; }
@@ -80,6 +84,7 @@ namespace MBS.Web.Controls
 			thead.ID = this.ID + "_thead";
 
 			System.Web.UI.WebControls.TableHeaderRow rowHeaderGroup = new System.Web.UI.WebControls.TableHeaderRow();
+			rowHeaderGroup.AddCssClass("uwt-listview-row-group");
 			rowHeaderGroup.ID = this.ID + "_thead_tr_grp";
 			thead.Controls.Add(rowHeaderGroup);
 
@@ -113,6 +118,10 @@ namespace MBS.Web.Controls
 
 				System.Web.UI.WebControls.TableHeaderCell cell = new System.Web.UI.WebControls.TableHeaderCell();
 				cell.ID = this.ID + "_thead_tr_td" + Columns.IndexOf(col).ToString();
+				foreach (string key in col.Attributes.Keys)
+				{
+					cell.Attributes.Add(key, col.Attributes[key]);
+				}
 				if (col.GroupTitle == null)
 				{
 					cell.RowSpan = 2;
@@ -141,12 +150,21 @@ namespace MBS.Web.Controls
 			foreach (ListViewItem lvi in Items)
 			{
 				System.Web.UI.WebControls.TableRow tr = new System.Web.UI.WebControls.TableRow();
+				foreach (string key in lvi.Attributes.Keys)
+				{
+					tr.Attributes.Add(key, lvi.Attributes[key]);
+				}
+
 				int columnIndex = 0;
 				for (int icol = 0; icol < Columns.Count; icol++)
 				{
 					System.Web.UI.WebControls.TableCell td = new System.Web.UI.WebControls.TableCell();
-					if (Columns[icol].ID == lvi.Columns[columnIndex].ColumnID)
+					if (columnIndex < lvi.Columns.Count && Columns[icol].ID == lvi.Columns[columnIndex].ColumnID)
 					{
+						foreach (string key in lvi.Columns[columnIndex].Attributes.Keys)
+						{
+							td.Attributes.Add(key, lvi.Columns[columnIndex].Attributes[key]);
+						}
 						System.Web.UI.Control ctl = lvi.Columns[columnIndex].RenderControl();
 						td.Controls.Add(ctl);
 						columnIndex++;

@@ -1,0 +1,45 @@
+div.uwt-alert
+{
+	padding: .9375rem;
+	
+	&> div.uwt-title
+	{
+		font-weight: 300;
+		font-size: 24px;
+		margin-bottom: 16px;
+	}
+	
+	.AlertColor(@color)
+	{
+		border: solid 1px hsl(hue(@color), saturation(@color), lightness(@color) + 20);
+		background-color: hsl(hue(@color), saturation(@color), lightness(@color) + 40);
+		color: hsl(hue(@color), saturation(@color), lightness(@color) - 20);
+	}
+	.AlertColor2(@textColor, @backgroundColor, @borderColor)
+	{
+		border: solid 1px @borderColor;
+		background-color: @backgroundColor;
+		color: @textColor;
+	}
+	
+	&.uwt-color-primary
+	{
+		.AlertColor(@ThemeColorPrimary);
+	}
+	&.uwt-color-danger
+	{
+		.AlertColor2(#4d1b1a, #ffcecd, #ffcecd);
+	}
+	&.uwt-color-success
+	{
+		.AlertColor(@ThemeColorSuccess);
+	}
+	&.uwt-color-warning
+	{
+		.AlertColor(@ThemeColorWarning);
+	}
+	&.uwt-color-info
+	{
+		.AlertColor(@ThemeColorInfo);
+	}
+}

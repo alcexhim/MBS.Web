@@ -1,0 +1,35 @@
+div.uwt-window
+{
+	background-color: #FFFFFF;
+	
+	&> div.uwt-header, &> div.uwt-content, &> div.uwt-footer
+	{
+		padding: 16px;
+	}
+	&> div.uwt-header
+	{
+		border-bottom: solid 1px #E2E7EB;
+		color: #242A30;
+		font-size: 18px;
+		font-weight: 500;
+	}
+	&> div.uwt-footer
+	{
+		border-top: solid 1px #E2E7EB;
+	}
+	&> div.uwt-content
+	{
+		&> div.uwt-loading
+		{
+			background-color: rgba(255, 255, 255, 0.8);
+		}
+	}
+	
+	transition: visibility linear 0.3s, opacity linear 0.3s, transform linear 0.3s;
+	transform-origin: center center;
+	transform: scale(0.0) scaleX(-2.0);
+	&.uwt-visible
+	{
+		transform: scale(1.0) scaleX(1.0);
+	}
+}

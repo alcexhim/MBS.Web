@@ -1,0 +1,107 @@
+@ToggleSwitchAnimationLength: 150ms; /* 250ms; */
+@ToggleSwitchSize: 50px;
+@ToggleSwitchThumbSize: 30px;
+
+.ToggleSwitchColors(@color)
+{
+	&.Checked
+	{
+		background-color: @color;
+		border-color: @color;
+		box-shadow: 0 0 0 16px @color inset;
+	}
+}
+
+div.ToggleSwitch
+{
+	position: relative;
+	width: @ToggleSwitchSize;
+	
+	&[disabled]
+	{
+		opacity: 0.5;
+	}
+	
+	.ToggleSwitchColors(@ThemeColor);
+	&.Primary
+	{
+		.ToggleSwitchColors(@ThemeColorPrimary);
+	}
+	&.Success
+	{
+		.ToggleSwitchColors(@ThemeColorSuccess);
+	}
+	&.Danger
+	{
+		.ToggleSwitchColors(@ThemeColorDanger);
+	}
+	&.Info
+	{
+		.ToggleSwitchColors(@ThemeColorInfo);
+	}
+	&.Warning
+	{
+		.ToggleSwitchColors(@ThemeColorWarning);
+	}
+	&.Red
+	{
+		.ToggleSwitchColors(@ThemeColorRed);
+	}
+	&.Blue
+	{
+		.ToggleSwitchColors(@ThemeColorBlue);
+	}
+	&.Purple
+	{
+		.ToggleSwitchColors(@ThemeColorPurple);
+	}
+	&.Orange
+	{
+		.ToggleSwitchColors(@ThemeColorOrange);
+	}
+	&.Black
+	{
+		.ToggleSwitchColors(@ThemeColorBlack);
+	}
+	
+	&.Checked
+	{
+		&> div.ToggleSwitchInner > div.ToggleThumb
+		{
+			margin-left: (@ToggleSwitchSize - @ToggleSwitchThumbSize);
+		}
+	}
+	&:not(.Checked)
+	{
+		background-color: #FFFFFF;
+		border-color: #DFDFDF;
+		box-shadow: 0 0 0 0 #DFDFDF inset;
+		&> div.ToggleSwitchInner > div.ToggleThumb
+		{
+			margin-left: 0px;
+		}
+	}
+	&> div.ToggleSwitchInner > div.ToggleThumb
+	{
+		transition: margin-left @ToggleSwitchAnimationLength ease-in 0s;
+	}
+	
+	transition: border 0.5s ease 0s, box-shadow 0.5s ease 0s, background-color 1.5s ease 0s;
+	
+	border-radius: 20px;
+	cursor: pointer;
+	height: 30px;
+	
+	div.ToggleOn, div.ToggleOff
+	{
+		display: none;
+	}
+	div.ToggleThumb
+	{
+		background: none repeat scroll 0 0 #FFFFFF;
+		border-radius: 100%;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+		height: @ToggleSwitchThumbSize;
+		width: @ToggleSwitchThumbSize;
+	}
+}

@@ -1,5 +1,6 @@
 ﻿div.uwt-columns
 {
+	display: flex;
 	box-sizing: border-box;
 	margin-bottom: 20px;
 	min-height: 1px;
@@ -13,9 +14,23 @@ div.uwt-columns > div.uwt-column-row
 div.uwt-columns > div.uwt-column-row
 {
 	display: flex;
-	&> div.uwt-column > div
+}
+div.uwt-columns > div.uwt-column-section
+{
+	display: flex;
+	flex-grow: 1;
+	
+	&> div.uwt-column
 	{
-		width: 100%;
+		flex-grow: 1;
+	}
+}
+
+@media (max-width: 1000px)
+{
+	div.uwt-columns
+	{
+		flex-direction: column;
 	}
 }
 

@@ -1,0 +1,139 @@
+﻿@ActionPreviewButton_ActionMenu_Width: 180px;
+
+div.uwt-actionpreviewbutton
+{
+	display: inline-block;
+	position: relative;
+	white-space: nowrap;
+	
+	&> a.apb-button
+	{
+		opacity: 0;
+		visibility: hidden;
+		
+		display: inline-block;
+		padding: 0px 2px 0px 6px;
+		border-radius: 4px;
+		
+		margin-left: 8px;
+		padding-right: 6px;
+		
+		&::before
+		{
+			content: "...";
+			font-family: inherit;
+			font-weight: bold;
+		}
+	}
+	&:hover
+	{
+		&> a.apb-button
+		{
+			opacity: 1;
+			visibility: visible;
+			&:hover
+			{
+				text-decoration: none;
+			}
+		}
+	}
+	&.uwt-visible > div.apb-preview
+	{
+		visibility: visible;
+		opacity: 1;
+	}
+}
+div.apb-preview
+{
+	display: flex;
+	visibility: hidden;
+	opacity: 0;
+	
+	float: right;
+	padding: 8px;
+	margin-left: 8px;
+	position: absolute;
+	
+	width: max-content;
+	
+	&> a.uwt-button.uwt-button-close
+	{
+		display: none;
+		position: absolute;
+		right: 8px;
+		top: 8px;
+		width: 8px;
+		height: 8px;
+		padding: 8px;
+		min-width: unset;
+		min-height: unset;
+		&::after
+		{
+			content: "\f00d";
+			font-family: "FontAwesome";
+			position: absolute;
+			top: 2px;
+			left: 6px;
+		}
+	}
+	&.uwt-detached
+	{
+		&> a.uwt-button.uwt-button-close
+		{
+			display: inline-block;
+		}
+		visibility: visible;
+		opacity: 1;
+		position: fixed;
+	}
+	
+	&> div.uwt-gripper
+	{
+		position: absolute;
+		top: 0px;
+		width: 64px;
+		height: 16px;
+		left: 50%;
+	}
+	
+	&.uwt-loading > div.apb-content, &.uwt-loading > div.apb-actions
+	{
+		display: none;
+	}
+	&:not(.uwt-loading) > div.uwt-spinner
+	{
+		display: none;
+	}
+	
+	&> div.apb-actions
+	{
+		margin: -8px;
+		margin-right: 16px;
+		
+		&> h2
+		{
+			cursor: default;
+		}
+		&> ul.uwt-menu
+		{
+			width: @ActionPreviewButton_ActionMenu_Width;
+			&> li.uwt-menu-item-popup
+			{
+				position: relative;
+				&> ul.uwt-menu
+				{
+					display: none;
+					position: absolute;
+					left: @ActionPreviewButton_ActionMenu_Width;
+					top: 0px;
+					width: max-content;
+					z-index: 1;
+				}
+				&:hover > ul.uwt-menu
+				{
+					display: block;
+				}
+			}
+		}
+	}
+}

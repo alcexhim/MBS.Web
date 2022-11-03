@@ -9,10 +9,10 @@ MeterDisplayStyle.Decimal = new MeterDisplayStyle(2);
 function Meter(parentElement)
 {
 	this.ParentElement = parentElement;
-	this.ContentWrapperElement = this.ParentElement.childNodes[0];
-	this.ContentElement = this.ContentWrapperElement.childNodes[0];
-	this.CanvasElement = this.ContentWrapperElement.childNodes[1];
-	this.LabelElement = this.ParentElement.childNodes[1];
+	this.ContentWrapperElement = this.ParentElement.children[0];
+	this.ContentElement = this.ContentWrapperElement.children[0];
+	this.CanvasElement = this.ContentWrapperElement.children[1];
+	this.LabelElement = this.ParentElement.children[1];
 	
 	this.get_Title = function()
 	{
@@ -211,7 +211,7 @@ function Meter(parentElement)
 
 window.addEventListener("load", function(e)
 {
-	var items = document.getElementsByClassName("Meter");
+	var items = document.getElementsByClassName("uwt-meter");
 	for (var i = 0; i < items.length; i++)
 	{
 		items[i].NativeObject = new Meter(items[i]);

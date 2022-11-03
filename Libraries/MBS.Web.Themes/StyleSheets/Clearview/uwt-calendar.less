@@ -1,0 +1,51 @@
+﻿div.uwt-calendar
+{
+	&> table
+	{
+		border-collapse: collapse;
+		&> thead
+		{
+			color: #babbbc;
+			font-size: .75rem;
+			font-weight: 500;
+			background-color: rgba(24,28,33,0.03);
+			&> tr
+			{
+				&> th
+				{
+					width: 2rem;
+					height: 2rem;
+					line-height: 2rem;
+				}
+			}
+		}
+		&> tbody
+		{
+			&> tr
+			{
+				&> td
+				{
+					&> a
+					{
+						border-radius: .25rem;
+						color: #4E5155;
+						&.uwt-selected
+						{
+							background-color: #26B4FF;
+							color: #fff;
+							&:hover
+							{
+								background-color: darken(#26B4FF, 5%);
+								color: #fff;
+							}
+						}
+						&:hover
+						{
+							background-color: rgba(24,28,33,0.03);
+						}
+					}
+				}
+			}
+		}
+	}
+}

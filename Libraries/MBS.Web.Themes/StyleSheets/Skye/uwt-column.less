@@ -1,0 +1,20 @@
+﻿div.uwt-columns > div.uwt-column-section
+{
+	&:not(:last-child)
+	{
+		border-right: solid 1px rgba(255, 255, 255, 0.3);
+		border-bottom: none;
+	}
+}
+
+@media (max-width: 1000px)
+{
+	div.uwt-columns > div.uwt-column-section
+	{
+		&:not(:last-child)
+		{
+			border-right: none;
+			border-bottom: solid 1px rgba(255, 255, 255, 0.3);
+		}
+	}
+}

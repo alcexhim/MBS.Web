@@ -13,6 +13,15 @@
 */
 @import "Fonts/FontAwesome/FontAwesome.css";
 
+html
+{
+	height: 100%;
+}
+body
+{
+	height: 100%;
+	overflow: hidden;
+}
 h1
 {
 	font-size: 42px;
@@ -29,4 +38,108 @@ h4
 h4, h5, h6
 {
 	font-weight: 400;
+}
+
+div.uwt-container.uwt-layout-box-horizontal
+{
+	&> *
+	{
+		display: inline-block;
+	}
+}
+div.uwt-center
+{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.linear-gradient-twostop(@start, @end)
+{
+	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#dcfcff+0,7cc2ec+50,5bacdc+51,bcf8ff+100 */
+	background: @start; /* Old browsers */
+	background: -moz-linear-gradient(top, @start 0%, @end 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, @start 0%,@end 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, @start 0%,@end 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@{start}', endColorstr='@{end}',GradientType=0 ); /* IE6-9 */
+}
+.linear-gradient-fourstop(@start, @startmid, @endmid, @end)
+{
+	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#dcfcff+0,7cc2ec+50,5bacdc+51,bcf8ff+100 */
+	background: @start; /* Old browsers */
+	background: -moz-linear-gradient(top, @start 0%, @startmid 50%, @endmid 51%, @end 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, @start 0%,@startmid 50%,@endmid 51%,@end 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, @start 0%,@startmid 50%,@endmid 51%,@end 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@{start}', endColorstr='@{end}',GradientType=0 ); /* IE6-9 */
+}
+.user-select(@param)
+{
+	-webkit-user-select: @param;
+	-moz-user-select: @param;
+	-ms-user-select: @param;
+	user-select: @param;
+}
+
+.UwtColors()
+{
+
+	&.uwt-color-primary
+	{
+		background-color: @ThemeColorPrimaryLight;
+		border-color: @ThemeColorPrimary;
+	}
+	&.uwt-color-info
+	{
+		background-color: @ThemeColorInfoLight;
+		border-color: @ThemeColorInfo;
+	}
+	&.uwt-color-purple
+	{
+		background-color: @ThemeColorPurpleLight;
+		border-color: @ThemeColorPurple;
+	}
+	&.uwt-color-indigo
+	{
+		background-color: @ThemeColorIndigoLight;
+		border-color: @ThemeColorIndigo;
+	}
+	&.uwt-color-success
+	{
+		background-color: @ThemeColorSuccessLight;
+		border-color: @ThemeColorSuccess;
+	}
+	&.uwt-color-green
+	{
+		background-color: @ThemeColorGreenLight;
+		border-color: @ThemeColorGreen;
+	}
+	&.uwt-color-lime
+	{
+		background-color: @ThemeColorLimeLight;
+		border-color: @ThemeColorLime;
+	}
+	&.uwt-color-warning
+	{
+		background-color: @ThemeColorWarningLight;
+		border-color: @ThemeColorWarning;
+	}
+	&.uwt-color-yellow
+	{
+		background-color: @ThemeColorYellowLight;
+		border-color: @ThemeColorYellow;
+	}
+	&.uwt-color-danger
+	{
+		background-color: @ThemeColorDangerLight;
+		border-color: @ThemeColorDanger;
+	}
+	&.uwt-color-pink
+	{
+		background-color: @ThemeColorPinkLight;
+		border-color: @ThemeColorPink;
+	}
+}
+
+.uwt-nonexistent
+{
+	display: none;
 }

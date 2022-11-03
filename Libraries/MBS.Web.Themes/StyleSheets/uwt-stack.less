@@ -1,0 +1,23 @@
+﻿div.uwt-stack-container
+{
+	position: relative;
+	&> div.uwt-stack-page
+	{
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		right: 0px;
+		bottom: 0px;
+		
+		visibility: hidden;
+		opacity: 0;
+		
+		transition: visibility 0.3s, opacity 0.3s;
+		
+		&.uwt-visible
+		{
+			visibility: visible;
+			opacity: 1;
+		}
+	}
+}

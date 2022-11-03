@@ -1,0 +1,14 @@
+﻿body, body > form
+{
+	&> div.uwt-header > div.uwt-header-item.uwt-searchbar > div.uwt-popup
+	{
+		&:not(.uwt-loading) > div.uwt-spinner
+		{
+			display: none;
+		}
+		&.uwt-loading > div.uwt-dropdown-content
+		{
+			display: none;
+		}
+	}
+}

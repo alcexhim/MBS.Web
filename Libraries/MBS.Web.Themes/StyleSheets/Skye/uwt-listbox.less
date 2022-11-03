@@ -1,0 +1,29 @@
+﻿div.uwt-listbox
+{
+	background-color: #fff;
+	border: solid 1px #cfdbe2;
+	user-select: none;
+	
+	&> div.uwt-listitem
+	{
+		border-left: solid 3px transparent;
+		transition: all 0.3s;
+		
+		&.uwt-color-info
+		{
+			&:hover
+			{
+				border-left-color: #23b7e5;
+			}
+		}
+		
+		&:hover
+		{
+			background-color: #f8f9fa;
+		}
+		&:active
+		{
+			background-color: #e9ecef;
+		}
+	}
+}

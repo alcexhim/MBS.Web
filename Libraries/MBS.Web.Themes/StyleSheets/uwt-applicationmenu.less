@@ -1,13 +1,29 @@
 ﻿div.uwt-applicationmenu
 {
-	&> a.uwt-button
+	&> div.uwt-button
 	{
-		border: none;
-		background: none;
-		padding: 13px 20px;
-		display: inline-block;
-		
-		font-size: 18pt;
-		color: #fff;
+		&> button.uwt-button-dropdownbutton
+		{
+			border: none;
+			background: none;
+			padding: 13px 20px;
+			display: inline-block;
+			
+			font-size: 18pt;
+			color: #fff;
+			
+			&::before
+			{
+				content: "\f0c9";
+				font-family: FontAwesome;
+				color: #4E5155;
+			}
+		}
+		&> div.uwt-popup
+		{
+			/* for some reason there's a weird gap between the button and the dropdown */
+			/* margin-top: -4px; */
+			margin-top: -10px;
+		}
 	}
 }

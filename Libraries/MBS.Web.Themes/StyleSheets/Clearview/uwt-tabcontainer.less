@@ -1,0 +1,43 @@
+﻿div.uwt-tabcontainer
+{
+	&> ul.uwt-tabcontainer-tabs
+	{
+		&> li
+		{
+			&> a
+			{
+				border: solid 1px transparent;
+				color: #8c8e90;
+				transition: all 0.3s;
+				
+				&:hover
+				{
+					color: #4E5155;
+				}
+			}
+			&.uwt-selected
+			{
+				&> a
+				{
+					background: #fff;
+					border-color: rgba(24,28,33,0.06);
+					border-bottom-color: #fff;
+					
+					color: #4E5155;
+				}
+			}	
+		}
+	}
+	&> div.uwt-tabcontainer-tabpages
+	{
+		&> div.uwt-tabpage
+		{
+			transition: all 0.3s;
+			
+			background: #fff;
+			border: 1px solid rgba(24,28,33,0.06);
+			border-radius: 0 0 .25rem .25rem;
+			box-shadow: 0 1px 4px rgba(24,28,33,0.012);
+		}
+	}
+}

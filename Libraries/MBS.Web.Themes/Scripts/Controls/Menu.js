@@ -7,24 +7,24 @@ function Menu(parentElement)
 		{
 			case true:
 			{
-				System.ClassList.Add(this.ParentElement.parentNode, "Opened");
+				System.ClassList.Add(this.ParentElement.parentNode, "uwt-opened");
 				break;
 			}
 			case false:
 			{
-				System.ClassList.Remove(this.ParentElement.parentNode, "Opened");
+				System.ClassList.Remove(this.ParentElement.parentNode, "uwt-opened");
 				break;
 			}
 		}
 	};
-	
+	/*
 	for (var i = 0; i < this.ParentElement.childNodes.length; i++)
 	{
 		this.ParentElement.childNodes[i].childNodes[0].addEventListener("click", function(e)
 		{
 			if (this.parentNode.childNodes.length > 1)
 			{
-				System.ClassList.Toggle(this.parentNode, "Opened");
+				System.ClassList.Toggle(this.parentNode, "uwt-opened");
 			}
 			
 			this.blur();
@@ -37,105 +37,119 @@ function Menu(parentElement)
 			}
 		});
 	}
+	*/
 }
 
 window.addEventListener("load", function(e)
 {
-	var items = document.getElementsByClassName("Menu");
+	var items = document.getElementsByClassName("uwt-menu");
 	for (var i = 0; i < items.length; i++)
 	{
 		if (items[i].NativeObject) continue;
 		items[i].NativeObject = new Menu(items[i]);
 	}
+	var items = document.getElementsByClassName("uwt-contextmenu");
+	for (var i = 0; i < items.length; i++)
+	{
+		items[i].NativeObject = new ContextMenu(items[i]);
+	}
 });
 
-function ContextMenu()
+function ContextMenu(parentElement)
 {
 	this.Items = [];
-	this.ParentElement = null;
+	this.ParentElement = parentElement;
 	this.Show = function(x, y, parent)
 	{
 		ContextMenu.HideAll();
 		if (this.ParentElement == null)
 		{
-			var elem = document.createElement("ul");
-			elem.className = "Menu Popup";
-			elem.addEventListener("contextmenu", function(e)
-			{
-				e.preventDefault();
-				e.stopPropagation();
-				return false;
-			});
+			var elemPopup = document.createElement("div");
+			elemPopup.className = "uwt-popup";
+			parent.appendChild(elemPopup);
 			
-			for (var i = 0; i < this.Items.length; i++)
+			this.ParentElement = elemPopup;
+		}
+		
+		while (this.ParentElement.children.length > 0)
+		{
+			this.ParentElement.children[0].remove();
+		}
+		
+		var elem = document.createElement("ul");
+		elem.className = "uwt-menu";
+		elem.addEventListener("contextmenu", function(e)
+		{
+			e.preventDefault();
+			e.stopPropagation();
+			return false;
+		});
+		
+		for (var i = 0; i < this.Items.length; i++)
+		{
+			var li = document.createElement("li");
+			// System.ClassList.Add(li, "uwt-menuitem");
+			if (this.Items[i].Visible)
 			{
-				var li = document.createElement("li");
-				System.ClassList.Add(li, "MenuItem");
-				if (this.Items[i].Visible)
-				{
-					System.ClassList.Add(li, "Visible");
-				}
-				
-				if (this.Items[i].ClassName == "MenuItemCommand")
-				{
-					var elem1 = document.createElement("a");
-					elem1.setAttribute("href", "#");
-					elem1.addEventListener("click", function(e)
-					{
-						this.NativeObject.Hide();
-						this.MenuItem.Execute();
-						
-						e.preventDefault();
-						e.stopPropagation();
-						return false;
-					});
-					elem1.innerHTML = this.Items[i].Title;
-					elem1.NativeObject = this;
-					elem1.MenuItem = this.Items[i];
-					li.appendChild(elem1);
-					
-					System.ClassList.Add(li, "Command");
-				}
-				else if (this.Items[i].ClassName == "MenuItemSeparator")
-				{
-					System.ClassList.Add(li, "Separator");
-				}
-				else if (this.Items[i].ClassName == "MenuItemHeader")
-				{
-					System.ClassList.Add(li, "Header");
-					li.innerHTML = this.Items[i].Title;
-				}
-				elem.appendChild(li);
+				System.ClassList.Add(li, "uwt-visible");
 			}
 			
-			elem.style.left = x + "px";
-			elem.style.top = y + "px";
-			
-			if (parent == null) parent = document.body;
-			
-			parent.appendChild(elem);
-			this.ParentElement = elem;
+			if (this.Items[i].ClassName == "MenuItemCommand")
+			{
+				var elem1 = document.createElement("a");
+				elem1.setAttribute("href", "#");
+				elem1.addEventListener("click", function(e)
+				{
+					this.NativeObject.Hide();
+					this.MenuItem.Execute(this, e);
+					
+					e.preventDefault();
+					e.stopPropagation();
+					return false;
+				});
+				elem1.innerHTML = this.Items[i].Title;
+				elem1.NativeObject = this;
+				elem1.MenuItem = this.Items[i];
+				li.appendChild(elem1);
+				
+				// System.ClassList.Add(li, "uwt-command");
+			}
+			else if (this.Items[i].ClassName == "MenuItemSeparator")
+			{
+				System.ClassList.Add(li, "uwt-separator");
+			}
+			else if (this.Items[i].ClassName == "MenuItemHeader")
+			{
+				System.ClassList.Add(li, "uwt-section");
+				li.innerHTML = this.Items[i].Title;
+			}
+			elem.appendChild(li);
 		}
-		this.ParentElement.className = "Menu Popup Visible";
+		
+		elemPopup.style.left = x + "px";
+		elemPopup.style.top = y + "px";
+		
+		if (parent == null) parent = document.body;
+		
+		this.ParentElement.appendChild(elem);
+		
+		this.ParentElement.className = "uwt-popup uwt-contextmenu uwt-visible";
 	};
 	this.Hide = function()
 	{
 		if (this.ParentElement == null) return;
-		this.ParentElement.className = "Menu Popup";
+		this.ParentElement.className = "uwt-popup uwt-contextmenu";
 	};
 }
 
 ContextMenu.HideAll = function()
 {
-	var items = document.getElementsByClassName("Menu");
+	var items = document.getElementsByClassName("uwt-contextmenu");
 	for (var i = 0; i < items.length; i++)
 	{
-		if (System.ClassList.Contains(items[i], "Popup"))
+		if (!System.ClassList.Contains(items[i], "uwt-visible-always"))
 		{
-			if (!System.ClassList.Contains(items[i], "Visible-Always"))
-			{
-				System.ClassList.Remove(items[i], "Visible");
-			}
+			System.ClassList.Remove(items[i], "uwt-visible");
 		}
 	}
 };
@@ -161,13 +175,15 @@ function MenuItemCommand(id, title, onclick)
 	this.OnClientClick = onclick;
 	this.Visible = true;
 	
-	this.Execute = function()
+	this.Execute = function(sender, e)
 	{
-		if (this.OnClientClick != null) this.OnClientClick();
+		if (this.OnClientClick != null) this.OnClientClick(sender, e);
 	};
 }
 
-window.addEventListener("contextmenu", function()
+window.addEventListener("contextmenu", function(e)
 {
 	ContextMenu.HideAll();
+	
+	e.preventDefault();
 });

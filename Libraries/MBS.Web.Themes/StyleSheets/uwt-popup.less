@@ -1,0 +1,32 @@
+﻿div.uwt-popup
+{
+	opacity: 0;
+	visibility: hidden;
+	
+	position: absolute;
+	z-index: 150;
+	
+	font-size: initial;
+	font-weight: initial;
+	
+	&.uwt-visible
+	{
+		opacity: 1;
+		visibility: visible;
+	}
+	
+	min-width: 10rem;
+	/* padding: .3125rem 0; */
+	margin: .125rem 0 0;
+	
+	box-shadow: 0 1px 6px rgba(0,0,0,0.09);
+	transition: opacity .3s, visibility .3s;
+	
+	&> div.uwt-spinner
+	{
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 48px;
+		margin-bottom: 48px;
+	}
+}

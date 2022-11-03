@@ -61,14 +61,17 @@ function TabContainer(parentElement)
 	{
 		(function(i, tc)
 		{
-			tabs.children[i].children[0].addEventListener("click", function(e)
+			if (!System.ClassList.Contains(tabs.children[i], "uwt-tabcontainer-controlbox"))
 			{
-				tc.SetSelectedTab(tabs.children[i]);
-				
-				e.preventDefault();
-				e.stopPropagation();
-				return false;
-			});
+				tabs.children[i].children[0].addEventListener("click", function(e)
+				{
+					tc.SetSelectedTab(tabs.children[i]);
+					
+					e.preventDefault();
+					e.stopPropagation();
+					return false;
+				});
+			}
 		})(i, this);
 	}
 	

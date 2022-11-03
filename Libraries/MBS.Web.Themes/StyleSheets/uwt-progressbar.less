@@ -1,0 +1,31 @@
+﻿div.uwt-progressbar
+{
+    background-color: rgba(24,28,33,0.03);
+    border-radius: 10rem;
+    margin-top: .25rem !important;
+    margin-bottom: 1.5rem !important;
+    height: 4px;
+    overflow: hidden;
+    position: relative;
+}
+div.uwt-progressbar > div.uwt-progressbar-value
+{
+    transition: width 0.6s ease;
+    width: 0%;
+}
+
+@keyframes progress-marquee
+{
+    from { left: -25%; }
+    to { left: 125%; }
+}
+div.uwt-progressbar.uwt-progressbar-marquee > div.uwt-progressbar-value
+{
+    position: absolute;
+    
+    width: 25% !important;
+    animation: progress-marquee;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+    animation-iteration-count: infinite;
+}

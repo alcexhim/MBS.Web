@@ -1,0 +1,142 @@
+﻿div.uwt-ribbon
+{
+	&> ul.uwt-ribbon-tab-buttons
+	{
+		background-color: #bfdbff;
+		border-bottom: solid 1px #8db2e3;
+		
+		&> li
+		{
+			color: #15428b;
+			
+			&.uwt-selected
+			{
+				.linear-gradient-twostop(#eff6fe, #e0eaf6);
+				border: solid 1px #8db2e3;
+				border-bottom-color: #e0eaf6;
+			}
+		}
+	}
+	&> div.uwt-ribbon-tab-contents
+	{
+		.linear-gradient-fourstop(#dfecf7, #d1dff0, #c7d8ed, #d8e8f5);
+		min-height: 88px;
+		
+		&> div
+		{
+			&> div.uwt-ribbon-tab-group
+			{
+				border: solid 1px #c5d2df;
+			
+				&:hover
+				{
+					.linear-gradient-fourstop(#e4effd, #e8f0fc, #dceafb, #dce8f8);
+					border-color: #7eadd3;
+				}
+				
+				&> div.uwt-content
+				{
+					.uwt-ribbon-command
+					{
+						div.uwt-title
+						{
+							color: #15428b;
+						}
+						&.uwt-button, &.uwt-splitbutton
+						{
+							border: solid 1px transparent;
+							&.uwt-selected
+							{
+								border-color: #8e8165;
+								border-radius: 3px;
+							}
+						}
+						&.uwt-button
+						{
+							&:hover
+							{
+								.linear-gradient-fourstop(#fffff7, #ffd75c, #ffd649, #ffe793);
+								border-color: #ddcf9b;
+							}
+							&:active, &.uwt-selected
+							{
+								.linear-gradient-fourstop(#f8b66a, #fda762, #fd983f, #febb60);
+							}
+						}
+						&.uwt-splitbutton
+						{
+							&> div.uwt-button
+							{
+								border-bottom: solid 1px transparent;
+							}
+							&> div.uwt-dropdown-button
+							{
+								border-top: solid 1px transparent;
+							}
+							&:hover
+							{
+								border-color: #ddcf9b;
+								&> div.uwt-button
+								{
+									.linear-gradient-fourstop(#fffff7, #fff7da, #fff1c3, #fff0c1);
+									border-bottom-color: #d0bf85;
+									&:hover
+									{
+										.linear-gradient-fourstop(#fffddb, #ffe797, #ffd75b, #ffd357);
+									}
+								}
+								&> div.uwt-dropdown-button
+								{
+									.linear-gradient-twostop(#fff2cc, #fff7dc);
+									border-top-color: #fff3d4;
+									&:hover
+									{
+										.linear-gradient-twostop(#ffd35a, #ffeaa8);
+									}
+								}
+							}
+							&> div.uwt-button
+							{
+								&:hover
+								{
+									.linear-gradient-fourstop(#fffff7, #ffd75c, #ffd649, #ffe793);
+									border-color: #ddcf9b;
+								}
+							}
+							&.uwt-selected
+							{
+								&> div.uwt-button
+								{
+									.linear-gradient-fourstop(#fed6a9, #fbb263, #fa9b32, #f9a949);
+									border-bottom: solid 1px #fce9a1;
+								}
+								&> div.uwt-dropdown-button
+								{
+									.linear-gradient-twostop(#fbbd5e, #fce9a1);
+									border-top: solid 1px #fff1d8;
+								}
+							}
+						}
+						&.uwt-combobox
+						{
+							border: solid 1px #abc1de;
+							background-color: #eaf2fb;
+						}
+					}
+				}
+				&> div.uwt-title
+				{
+					.linear-gradient-twostop(#c8e0ff, #d6edff);
+					color: #3e6aaa;
+				}
+			}
+		}
+	}
+}
+body:not(.uwt-ribbon-visible)
+{
+	&> div.uwt-ribbon, &> form > div.uwt-ribbon
+	{
+		display: none;
+	}
+}

@@ -1,0 +1,24 @@
+﻿body
+{
+	&> div.uwt-page-header, &> form > div.uwt-page-header
+	{
+		display: flex;
+		&> div.uwt-title
+		{
+			flex: auto;
+		}
+		&> input.uwt-searchbox
+		{
+			width: 20%;
+			margin: 6px;
+		}
+	}
+}
+
+body:not(.uwt-header-visible)
+{
+	&> div.uwt-page-header, &> form > div.uwt-page-header
+	{
+		display: none;
+	}
+}

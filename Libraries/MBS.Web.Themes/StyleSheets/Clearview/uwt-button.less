@@ -1,0 +1,102 @@
+﻿.ButtonColor(@border-color, @background, @color)
+{
+	border-color: @border-color;
+	background: @background;
+	color: @color;
+}
+.DefaultButtonColor()
+{
+	.ButtonColor(rgba(24,28,33,0.1), rgba(24,28,33,0.06), #4E5155);
+}
+
+input[type=submit], input[type=reset], input[type=button], button, a.uwt-button
+{
+	border-color: rgba(24,28,33,0.1);
+	border-radius: .25rem;
+	background: rgba(0,0,0,0);
+	color: #4E5155;
+	transition: all 0.2s ease-in-out;
+	&:hover
+	{
+		.DefaultButtonColor();
+	}
+	&.uwt-color-primary
+	{
+		.ButtonColor(transparent, #26B4FF, #ffffff);
+		&:hover
+		{
+			.ButtonColor(rgba(0,0,0,0), #24abf2, #fff);
+		}
+	}
+	&.uwt-color-danger
+	{
+		.ButtonColor(transparent, #d9534f, #ffffff);
+		&:hover
+		{
+			.ButtonColor(rgba(0,0,0,0), #ce4f4b, #fff);
+		}
+	}
+	&.uwt-color-success
+	{
+		.ButtonColor(transparent, #02BC77, #ffffff);
+		&:hover
+		{
+			.ButtonColor(rgba(0,0,0,0), #02b371, #fff);
+		}
+	}
+}
+div.uwt-button
+{
+	&.uwt-color-primary
+	{
+		&> input[type=submit], input[type=reset], input[type=button], button, a.uwt-button
+		{
+			.ButtonColor(transparent, #26B4FF, #ffffff);
+			&:hover
+			{
+				.ButtonColor(rgba(0,0,0,0), #24abf2, #fff);
+			}
+		}
+	}
+	&.uwt-color-success
+	{
+		&> input[type=submit], input[type=reset], input[type=button], button, a.uwt-button
+		{
+			.ButtonColor(transparent, #02BC77, #ffffff);
+			&:hover
+			{
+				.ButtonColor(rgba(0,0,0,0), #02b371, #fff);
+			}
+		}
+	}
+}
+div.uwt-button.uwt-button-hasdropdown
+{
+	&> input:nth-child(1):hover + input:nth-child(2)
+	{
+		.DefaultButtonColor();
+	}
+	&.uwt-color-primary > input:nth-child(1):hover + input:nth-child(2)
+	{
+		.ButtonColor(rgba(0,0,0,0), #24abf2, #fff);
+	}
+}
+
+div.uwt-button.uwt-button-hasdropdown
+{
+	&:not(.uwt-button-requiredropdown)
+	{
+		/* split dropdown button styles */
+		&> input:nth-child(1)
+		{
+			border-top-right-radius: 0px;
+			border-bottom-right-radius: 0px;
+		}
+		
+		&> input:nth-child(2)
+		{
+			border-top-left-radius: 0px;
+			border-bottom-left-radius: 0px;
+		}
+	}
+}

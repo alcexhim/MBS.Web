@@ -3,11 +3,11 @@
 	color: #ffffff !important;
 	&> div.uwt-content > small
 	{
-		color: rgba(255, 255, 255, 0.7);
+		color: rgba(255, 255, 255, 0.8);
 	}
 	&> div.uwt-footer > a
 	{
-		color: rgba(255, 255, 255, 0.4);
+		color: rgba(255, 255, 255, 0.6);
 	}
 	&:hover > div.uwt-footer > a
 	{
@@ -17,21 +17,23 @@
 
 div.uwt-tile
 {
+	border-radius: 0.25rem;
+	box-shadow: 0 1px 1px rgba(0,0,0,.05);
+	transition: all 0.3s;
+	
+	&> div.uwt-header
+	{
+		background-color: rgba(255, 255, 255, 0.1);
+	}
+	&> div.uwt-footer
+	{
+		background-color: rgba(0, 0, 0, 0.1);
+	}
+	
 	&.uwt-color-toyo
 	{
-		&> div.uwt-header
-		{
-			background-color: #677fa4;
-		}
-		&> div.uwt-content
-		{
-			background-color: #556b8d;
-		}
-		&> div.uwt-footer
-		{
-			background-color: #42536d;
-			color: rgba(255, 255, 255, 0.4);
-		}
+		background-color: #556b8d;
+		
 		&:hover
 		{
 			&> div.uwt-header
@@ -76,6 +78,22 @@ div.uwt-tile
 			{
 				background-color: #5f932c;
 			}
+		}
+	}
+	&.uwt-color-primary
+	{
+		background-color: #5d9cec;
+		&:hover
+		{
+			background-color: shade(#5d9cec, 10%);
+		}
+	}
+	&.uwt-color-green
+	{
+		background-color: #37bc9b;
+		&:hover
+		{
+			background-color: shade(#37bc9b, 10%);
 		}
 	}
 	&.uwt-color-orange
