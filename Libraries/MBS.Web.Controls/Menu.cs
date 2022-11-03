@@ -58,8 +58,15 @@ namespace MBS.Web.Controls
 		public MenuItem.MenuItemCollection Items { get; } = new MenuItem.MenuItemCollection();
 
 		protected override HtmlTextWriterTag TagKey => HtmlTextWriterTag.Ul;
+<<<<<<< HEAD
 		public override void RenderBeginTag(HtmlTextWriter writer)
 		{
+=======
+
+		protected override void OnInit(EventArgs e)
+		{
+			base.OnInit(e);
+>>>>>>> fa6a3e5406ba9b6d2229efa45d9687501b3b2ae2
 			CssClass = "uwt-menu";
 
 			for (int i = 0; i < Items.Count; i++)
@@ -67,8 +74,11 @@ namespace MBS.Web.Controls
 				System.Web.UI.Control ctl = Items[i].Render();
 				Controls.Add(ctl);
 			}
+<<<<<<< HEAD
 
 			base.RenderBeginTag(writer);
+=======
+>>>>>>> fa6a3e5406ba9b6d2229efa45d9687501b3b2ae2
 		}
 	}
 }

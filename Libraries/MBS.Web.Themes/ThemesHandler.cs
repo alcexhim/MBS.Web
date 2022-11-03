@@ -35,8 +35,11 @@ namespace MBS.Web.Themes
 						context.Response.StatusCode = 200;
 						context.Response.StatusDescription = "OK";
 						context.Response.ContentType = "text/css";
+<<<<<<< HEAD
 						context.Response.Charset = "utf-8";
 						context.Response.ContentEncoding = Encoding.UTF8;
+=======
+>>>>>>> fa6a3e5406ba9b6d2229efa45d9687501b3b2ae2
 						context.Response.Write(SSB.ToString(context.Request.QueryString.ToDictionary()));
 					}
 					else if (pathParts[3] == "Fonts" && pathParts.Length > 4)

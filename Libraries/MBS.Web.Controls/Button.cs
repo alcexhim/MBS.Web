@@ -13,15 +13,30 @@ namespace MBS.Web.Controls
 	{
 		protected override HtmlTextWriterTag TagKey => HtmlTextWriterTag.A;
 		public ButtonDropDownStyle DropDownStyle { get; set; } = ButtonDropDownStyle.None;
+<<<<<<< HEAD
 		public System.Web.UI.HtmlControls.HtmlGenericControl DropDownContent { get; }
+=======
+		public ITemplate DropDownContent { get; set; }
+>>>>>>> fa6a3e5406ba9b6d2229efa45d9687501b3b2ae2
 		public string IconName { get; set; } = null;
 
 		public string Text { get; set; } = null;
 
+<<<<<<< HEAD
 		public Button()
 		{
 			DropDownContent = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
 			DropDownContent.AddCssClass("uwt-popup-content");
+=======
+		protected override void CreateChildControls()
+		{
+			base.CreateChildControls();
+
+			System.Web.UI.HtmlControls.HtmlGenericControl spanText = new System.Web.UI.HtmlControls.HtmlGenericControl("span");
+			spanText.AddCssClass("uwt-title");
+			spanText.InnerHtml = Text;
+			Controls.Add(spanText);
+>>>>>>> fa6a3e5406ba9b6d2229efa45d9687501b3b2ae2
 		}
 
 		public override void RenderBeginTag(HtmlTextWriter writer)
@@ -40,11 +55,14 @@ namespace MBS.Web.Controls
 			writer.Write(sbCssClass.ToString());
 			writer.Write("\">");
 
+<<<<<<< HEAD
 			System.Web.UI.HtmlControls.HtmlGenericControl spanText = new System.Web.UI.HtmlControls.HtmlGenericControl("span");
 			spanText.AddCssClass("uwt-title");
 			spanText.InnerHtml = Text;
 			Controls.Add(spanText);
 
+=======
+>>>>>>> fa6a3e5406ba9b6d2229efa45d9687501b3b2ae2
 			base.RenderBeginTag(writer);
 		}
 		public override void RenderEndTag(HtmlTextWriter writer)
@@ -53,8 +71,12 @@ namespace MBS.Web.Controls
 			writer.Write("<button class=\"uwt-button-dropdownbutton\"></button>");
 
 			Popup p = new Popup();
+<<<<<<< HEAD
 			// DropDownContent?.InstantiateIn(p);
 			p.Controls.Add(DropDownContent);
+=======
+			DropDownContent?.InstantiateIn(p);
+>>>>>>> fa6a3e5406ba9b6d2229efa45d9687501b3b2ae2
 			p.RenderControl(writer);
 
 			writer.Write("</div>");

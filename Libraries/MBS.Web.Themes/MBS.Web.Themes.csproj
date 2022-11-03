@@ -1515,7 +1515,9 @@
     <None Include="Scripts\Controls\Countdown.js" />
     <None Include="Scripts\Controls\Sidebar.js" />
     <None Include="Scripts\Controls\LinkButton.js" />
+    <None Include="Scripts\Controls\AdditionalDetailWidget.js" />
     <None Include="Scripts\Controls\ProgressBar.js" />
+    <None Include="Scripts\Controls\Notification.js" />
     <None Include="Scripts\Controls\RadioButton.js" />
     <None Include="Scripts\Controls\DateTimePicker.js" />
     <None Include="Scripts\Controls\Calendar.js" />

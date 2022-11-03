@@ -154,6 +154,7 @@ namespace MBS.Web.Controls
 			Rows.Clear();
 			foreach (FormViewItem item in Items)
 			{
+<<<<<<< HEAD
 				bool oldreadonly = item.ReadOnly;
 				if (ReadOnly)
 				{
@@ -168,6 +169,11 @@ namespace MBS.Web.Controls
 					item.ReadOnly = oldreadonly;
 				}
 
+=======
+				Control ctl = item.Render();
+				ctl.ID = item.Name;
+
+>>>>>>> fa6a3e5406ba9b6d2229efa45d9687501b3b2ae2
 				if (ctl.ID == null)
 				{
 					ctl.ID = "uwt-" + rnd.Next();
