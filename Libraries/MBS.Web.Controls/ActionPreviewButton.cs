@@ -40,16 +40,15 @@ namespace MBS.Web.Controls
 			this.Controls.Add(btn);
 
 			System.Web.UI.WebControls.Panel pnlContent = new System.Web.UI.WebControls.Panel();
-<<<<<<< HEAD
+
 			pnlContent.AddCssClass("apb-preview uwt-popup uwt-loading");
 
 			System.Web.UI.HtmlControls.HtmlGenericControl divLoading = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
 			divLoading.AddCssClass("uwt-spinner");
 
 			pnlContent.Controls.Add(divLoading);
-=======
+
 			pnlContent.AddCssClass("apb-preview uwt-popup");
->>>>>>> fa6a3e5406ba9b6d2229efa45d9687501b3b2ae2
 
 			System.Web.UI.WebControls.Panel pnlMenuItems = new System.Web.UI.WebControls.Panel();
 			pnlMenuItems.AddCssClass("apb-actions");

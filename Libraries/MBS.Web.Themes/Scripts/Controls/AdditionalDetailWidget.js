@@ -1,27 +1,19 @@
-function AdditionalDetailWidget(parent)
+﻿function AdditionalDetailWidget(parent)
 {
 	this.Parent = parent;
 	this.Show = function ()
 	{
-<<<<<<< HEAD
-=======
-		console.log("showing adw");
->>>>>>> fa6a3e5406ba9b6d2229efa45d9687501b3b2ae2
 		System.ClassList.Add(this.Parent, "uwt-visible");
 	};
 	this.Hide = function ()
 	{
-<<<<<<< HEAD
-=======
-		console.log("hiding adw");
->>>>>>> fa6a3e5406ba9b6d2229efa45d9687501b3b2ae2
 		System.ClassList.Remove(this.Parent, "uwt-visible");
 	};
 	
 	this.PreviewElement = this.Parent.children[2];
 
 	this.TextLink = parent.children[0];
-<<<<<<< HEAD
+
 	this.TextLinkText = this.TextLink.children[1];
 	
 	this.ButtonLink = parent.children[1];
@@ -127,9 +119,7 @@ function AdditionalDetailWidget(parent)
 	};
 	
 	this.InitializeGripper(this.Gripper);
-=======
 	this.ButtonLink = parent.children[1];
->>>>>>> fa6a3e5406ba9b6d2229efa45d9687501b3b2ae2
 	
 	this.ButtonLink.NativeObject = this;
 	this.ButtonLink.addEventListener("click", function (e)
@@ -139,11 +129,7 @@ function AdditionalDetailWidget(parent)
 			this.NativeObject.Show();
 		}
 		e.preventDefault();
-<<<<<<< HEAD
 		//e.stopPropagation();
-=======
-		e.stopPropagation();
->>>>>>> fa6a3e5406ba9b6d2229efa45d9687501b3b2ae2
 	});
 	this.ClearPreviewMenuItems = function()
 	{

@@ -26,20 +26,23 @@ namespace MBS.Web.Themes
 				if (pathParts[1] == "Themes")
 				{
 					themeName = pathParts[2];
-					if (pathParts[3] == "Theme.css")
+					if (pathParts[3] == "Theme.css" || pathParts[3] == "Theme.less")
 					{
 						StyleSheetBulder SSB = new StyleSheetBulder();
 						SSB.ThemeName = themeName;
 						SSB.AddManifestResourceStreams(strms);
+						if (pathParts[3].EndsWith(".less"))
+						{
+							SSB.Compiled = false;
+						}
 
 						context.Response.StatusCode = 200;
 						context.Response.StatusDescription = "OK";
 						context.Response.ContentType = "text/css";
-<<<<<<< HEAD
+
 						context.Response.Charset = "utf-8";
 						context.Response.ContentEncoding = Encoding.UTF8;
-=======
->>>>>>> fa6a3e5406ba9b6d2229efa45d9687501b3b2ae2
+
 						context.Response.Write(SSB.ToString(context.Request.QueryString.ToDictionary()));
 					}
 					else if (pathParts[3] == "Fonts" && pathParts.Length > 4)

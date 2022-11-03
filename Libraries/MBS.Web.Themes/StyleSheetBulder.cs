@@ -31,6 +31,8 @@ namespace MBS.Web.Themes
 		StringBuilder sbAfter = new StringBuilder();
 
 		public bool Compressed { get; set; } = true;
+		public bool Compiled { get; set; } = true;
+
 		public string ThemeName { get; set; } = null;
 
 		public void AddManifestResourceStreams(Reflection.ManifestResourceStream[] strms)
@@ -45,7 +47,7 @@ namespace MBS.Web.Themes
 					{
 						// top-level
 						System.IO.Stream stream = strm.Stream;
-						string strmdata = GetStreamContent(stream);
+						string strmdata = String.Format("/* {0} */", objectFileName) + "\r\n" + GetStreamContent(stream);
 
 						if (parts.Length == 2)
 						{
@@ -102,10 +104,15 @@ namespace MBS.Web.Themes
 				}
 			}
 
-			dotless.Core.LessEngine less = new dotless.Core.LessEngine();
-			less.Compress = Compressed;
-			string css = less.TransformToCss(String.Concat(new string[] { sbBefore.ToString(), System.Environment.NewLine, sbAfter.ToString() }), null);
-			return css;
+			string lessstr = String.Concat(new string[] { sbBefore.ToString(), System.Environment.NewLine, sbAfter.ToString() });
+			if (Compiled)
+			{
+				dotless.Core.LessEngine less = new dotless.Core.LessEngine();
+				less.Compress = Compressed;
+				string css = less.TransformToCss(lessstr, null);
+				return css;
+			}
+			return lessstr;
 		}
 	}
 }

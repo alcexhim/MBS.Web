@@ -52,21 +52,15 @@ window.addEventListener("load", function()
 	document.body.appendChild(MessageDialog.ModalParent);
 	
 	var divDialog = document.createElement("div");
-<<<<<<< HEAD
+
 	divDialog.className = "uwt-window uwt-dialog uwt-messagedialog";
-=======
-	divDialog.className = "uwt-dialog uwt-messagedialog";
->>>>>>> fa6a3e5406ba9b6d2229efa45d9687501b3b2ae2
 	
 	var divDialogHeader = document.createElement("div");
 	divDialogHeader.className = "uwt-header";
 	
 	var divDialogTitle = document.createElement("div");
-<<<<<<< HEAD
+
 	divDialogTitle.className = "uwt-title";
-=======
-	divDialogTitle.className = "uwt-dialog-title";
->>>>>>> fa6a3e5406ba9b6d2229efa45d9687501b3b2ae2
 	divDialogHeader.appendChild(divDialogTitle);
 	
 	var divDialogHeaderButtons = document.createElement("div");
